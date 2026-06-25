@@ -1,0 +1,27 @@
+{
+  "name": "webpage-drafted",
+  "version": "1.0.0",
+  "description": "Rascunho de alta fidelidade da landing page da Drafted (PR para a era da IA).",
+  "main": "index.html",
+  "scripts": {
+    "shots": "node js/shoot.mjs cream",
+    "shots:light": "node js/shoot.mjs light",
+    "record": "node js/record.mjs",
+    "pdf": "node js/pdf.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorroquee/webpage-drafted.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/victorroquee/webpage-drafted/issues"
+  },
+  "homepage": "https://github.com/victorroquee/webpage-drafted#readme",
+  "dependencies": {
+    "puppeteer-core": "^23.11.1"
+  }
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:640px;height:600px;background:#fffde9;overflow:hidden}
+.stage{width:640px;height:600px;display:flex;align-items:center;justify-content:center}
+.mascot{width:340px;height:380px;overflow:visible;transform-origin:50% 72%;animation:bob 3.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-12px) rotate(-2.4deg)}50%{transform:translateY(-4px) rotate(0)}75%{transform:translateY(-12px) rotate(2.4deg)}}
+.m-body{transform-origin:50% 50%;animation:mpulse 3.6s ease-in-out infinite}
+@keyframes mpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+.m-eye{transform-box:fill-box;transform-origin:center;animation:blink 3.6s infinite}
+@keyframes blink{0%,88%,100%{transform:scaleY(1)}94%{transform:scaleY(.08)}}
+.m-leg{transform-box:fill-box;transform-origin:top center}
+.l{animation:sl 3.6s ease-in-out infinite}.r{animation:sr 3.6s ease-in-out infinite}
+@keyframes sl{0%,100%{transform:rotate(4deg)}50%{transform:rotate(-5deg)}}
+@keyframes sr{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(5deg)}}
+</style></head><body><div class="stage">
+<svg class="mascot" viewBox="0 0 600 640" fill="none">
+<g class="m-body">
+<path fill="#6b2137" d="M 300,55 L 336.7,196.3 L 462.6,122.4 L 388.7,248.3 L 530,285 L 388.7,321.7 L 462.6,447.6 L 336.7,373.7 L 300,515 L 263.3,373.7 L 137.4,447.6 L 211.3,321.7 L 70,285 L 211.3,248.3 L 137.4,122.4 L 263.3,196.3 Z"/>
+<ellipse class="m-eye" cx="255" cy="250" rx="17" ry="23" fill="#fffde9"/>
+<ellipse class="m-eye" cx="345" cy="250" rx="17" ry="23" fill="#fffde9"/>
+<path d="M250 300 Q 300 340 350 300" stroke="#fffde9" stroke-width="14" stroke-linecap="round" fill="none"/>
+</g>
+<g stroke="#6b2137" stroke-width="13" stroke-linecap="round" fill="none">
+<path class="m-leg l" d="M256 470 C 244 540, 236 568, 240 596"/>
+<path class="m-leg r" d="M344 470 C 356 540, 364 568, 360 596"/>
+</g>
+<circle cx="240" cy="604" r="13" fill="#6b2137"/><circle cx="360" cy="604" r="13" fill="#6b2137"/>
+</svg></div></body></html>

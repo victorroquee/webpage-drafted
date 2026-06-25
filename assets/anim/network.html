@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:900px;height:740px;background:#351e28;overflow:hidden}
+.stage{width:900px;height:740px;display:flex;align-items:center;justify-content:center}
+.conn{width:820px;height:680px}
+.link{stroke:rgba(255,183,183,.34);stroke-width:1.8;stroke-dasharray:5 6;animation:dash 9s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-110}}
+.pulse{fill:#ffb7b7}
+.node{transform-box:fill-box;transform-origin:center;animation:nfloat 5s ease-in-out infinite}
+.node-chip{fill:#fffde9;stroke:rgba(255,253,233,.2)}
+.node-label{font-family:'Sora',sans-serif;font-weight:700;font-size:18px;fill:#351e28}
+.node-dot{animation:halo 3s ease-in-out infinite}
+@keyframes halo{0%,100%{opacity:.3}50%{opacity:.9}}
+@keyframes nfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.center-ring{fill:none;stroke:#ffb7b7;stroke-width:2;animation:ring 4s ease-out infinite}
+@keyframes ring{0%{r:90;opacity:.55}100%{r:180;opacity:0}}
+.center-star{transform-origin:410px 340px;animation:spin 26s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style></head><body><div class="stage">
+<svg class="conn" viewBox="0 0 820 680">
+<defs><radialGradient id="g" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffb7b7" stop-opacity=".32"/><stop offset="100%" stop-color="#ffb7b7" stop-opacity="0"/></radialGradient></defs>
+<g id="links"></g>
+<circle cx="410" cy="340" r="110" fill="url(#g)"/>
+<circle class="center-ring" cx="410" cy="340"/>
+<circle cx="410" cy="340" r="74" fill="#6b2137"/>
+<g class="center-star"><path fill="#fffde9" transform="translate(410,340) scale(0.2) translate(-300,-285)" d="M 300,55 L 336.7,196.3 L 462.6,122.4 L 388.7,248.3 L 530,285 L 388.7,321.7 L 462.6,447.6 L 336.7,373.7 L 300,515 L 263.3,373.7 L 137.4,447.6 L 211.3,321.7 L 70,285 L 211.3,248.3 L 137.4,122.4 L 263.3,196.3 Z"/></g>
+<g id="nodes"></g></svg></div>
+<script>
+const C={x:410,y:340};
+const nodes=[{label:'ChatGPT',x:170,y:110},{label:'Gemini',x:680,y:110},{label:'Google',x:70,y:340},{label:'Perplexity',x:752,y:340},{label:'Instagram',x:185,y:580},{label:'LinkedIn',x:660,y:580}];
+const NS='http://www.w3.org/2000/svg',L=document.getElementById('links'),N=document.getElementById('nodes');
+nodes.forEach((n,i)=>{const ln=document.createElementNS(NS,'line');ln.setAttribute('x1',C.x);ln.setAttribute('y1',C.y);ln.setAttribute('x2',n.x);ln.setAttribute('y2',n.y);ln.setAttribute('class','link');ln.style.animationDelay=(i*.4)+'s';L.appendChild(ln);
+const p=document.createElementNS(NS,'circle');p.setAttribute('r','5');p.setAttribute('class','pulse');const an=document.createElementNS(NS,'animateMotion');an.setAttribute('dur',(2.6+i*.25)+'s');an.setAttribute('repeatCount','indefinite');an.setAttribute('path',`M${n.x},${n.y} L${C.x},${C.y}`);p.appendChild(an);L.appendChild(p);});
+nodes.forEach((n,i)=>{const g=document.createElementNS(NS,'g');g.setAttribute('class','node');g.style.animationDelay=(i*.6)+'s';const w=n.label.length*11+46;g.innerHTML=`<rect class="node-chip" x="${n.x-w/2}" y="${n.y-23}" width="${w}" height="46" rx="23"/><circle class="node-dot" cx="${n.x-w/2+20}" cy="${n.y}" r="7" fill="#6b2137"/><text class="node-label" x="${n.x-w/2+37}" y="${n.y+6}">${n.label}</text>`;N.appendChild(g);});
+</script></body></html>

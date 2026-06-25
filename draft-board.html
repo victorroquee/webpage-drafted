@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Drafted · Rascunho da Landing Page — Board de Revisão</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#351e28; --wine:#6b2137; --cream:#fffde9;
+  --rose:#ffb7b7; --butter:#d0c360; --sky:#b7d8ff; --paper:#f7f7f5; --graphite:#4f4f4f;
+  --board:#efe9d9;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:var(--board);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55}
+h1,h2,h3,h4,.s{font-family:'Sora',sans-serif}
+.wrap{max-width:1500px;margin:0 auto;padding:0 56px}
+
+/* ---- COVER ---- */
+.cover{background:var(--ink);color:var(--cream);padding:90px 0 80px;position:relative;overflow:hidden}
+.cover .star{position:absolute;right:-30px;top:-30px;width:280px;opacity:.13}
+.cover .logo{display:flex;align-items:center;gap:10px;font-family:'Sora';font-weight:800;font-size:1.6rem;margin-bottom:60px}
+.cover .logo svg{width:34px;height:34px}
+.cover .tag{display:inline-block;font-family:'Sora';font-weight:600;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);border:1px solid rgba(255,183,183,.4);padding:8px 16px;border-radius:40px;margin-bottom:28px}
+.cover h1{font-weight:800;font-size:clamp(2.6rem,5.5vw,4.6rem);line-height:1.02;letter-spacing:-.03em;max-width:18ch}
+.cover .sub{margin-top:26px;font-size:1.15rem;max-width:60ch;opacity:.82}
+.cover-meta{margin-top:56px;display:flex;gap:50px;flex-wrap:wrap;font-size:.92rem}
+.cover-meta div{border-left:2px solid var(--wine);padding-left:16px}
+.cover-meta .k{font-family:'Sora';font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;opacity:.55;margin-bottom:6px}
+
+/* ---- HOW TO READ ---- */
+.legend{background:var(--cream);padding:46px 0}
+.legend .wrap{display:flex;gap:40px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.legend h3{font-size:1.1rem;margin-bottom:6px}
+.legend p{font-size:.95rem;color:var(--graphite);max-width:46ch}
+.legend-keys{display:flex;gap:14px;flex-wrap:wrap}
+.lk{display:flex;align-items:center;gap:9px;font-size:.82rem;font-weight:500;background:var(--paper);border:1px solid rgba(53,30,40,.1);padding:9px 14px;border-radius:30px}
+.lk .sw{width:14px;height:14px;border-radius:4px}
+
+/* ---- SECTION BLOCK ---- */
+.block{padding:70px 0;border-top:1px dashed rgba(53,30,40,.25)}
+.block-head{display:flex;align-items:baseline;gap:18px;margin-bottom:34px;flex-wrap:wrap}
+.block-num{font-family:'Sora';font-weight:800;font-size:2.6rem;color:var(--wine);line-height:1}
+.block-chip{font-family:'Sora';font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:var(--cream);padding:8px 15px;border-radius:30px}
+.block-head .desc{font-size:1.02rem;color:var(--graphite);flex:1;min-width:260px}
+
+.grid{display:grid;grid-template-columns:1.35fr .65fr;gap:34px;align-items:start}
+
+/* browser frame */
+.frame{border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(53,30,40,.5);border:1px solid rgba(53,30,40,.12);background:#fff}
+.frame-bar{background:var(--paper);display:flex;align-items:center;gap:8px;padding:11px 16px;border-bottom:1px solid rgba(53,30,40,.08)}
+.frame-bar .dots{display:flex;gap:6px}
+.frame-bar .dots i{width:11px;height:11px;border-radius:50%}
+.frame-bar .url{margin-left:14px;background:var(--cream);border-radius:30px;padding:6px 16px;font-size:.78rem;color:var(--graphite);flex:1;max-width:340px}
+.frame img{width:100%;display:block}
+
+/* annotation column */
+.notes{display:flex;flex-direction:column;gap:16px;position:sticky;top:20px}
+.note{background:var(--cream);border:1px solid rgba(53,30,40,.12);border-radius:16px;padding:20px 22px;position:relative}
+.note h4{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--wine);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.note h4 .ic{width:7px;height:7px;border-radius:50%;background:var(--wine)}
+.note ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.note li{font-size:.9rem;display:flex;gap:9px;align-items:flex-start;color:var(--ink)}
+.note li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--graphite);margin-top:8px;flex-shrink:0;opacity:.5}
+.note p{font-size:.9rem;color:var(--ink)}
+.note .copytext{font-style:italic;color:var(--graphite);font-size:.88rem;line-height:1.5;border-left:2px solid var(--butter);padding-left:12px}
+
+/* sticky callout */
+.sticky{padding:18px 20px;border-radius:4px;font-size:.88rem;font-weight:500;box-shadow:0 14px 28px -16px rgba(53,30,40,.5);position:relative;transform:rotate(-1.4deg)}
+.sticky.alt{transform:rotate(1.2deg)}
+.sticky .tagn{font-family:'Sora';font-weight:700;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:7px;opacity:.7}
+.sticky.butter{background:var(--butter);color:var(--ink)}
+.sticky.rose{background:var(--rose);color:var(--ink)}
+.sticky.sky{background:var(--sky);color:var(--ink)}
+
+/* comment field */
+.comment{border:1.5px dashed rgba(53,30,40,.3);border-radius:14px;padding:18px 20px;background:rgba(255,255,255,.45)}
+.comment h4{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--graphite);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.comment .lines{display:flex;flex-direction:column;gap:14px}
+.comment .lines i{display:block;height:1px;background:rgba(53,30,40,.18)}
+
+.badge-info{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;background:var(--sky);color:var(--ink);padding:6px 13px;border-radius:30px;margin-top:14px}
+
+/* ---- closing ---- */
+.closing{background:var(--ink);color:var(--cream);padding:80px 0;position:relative;overflow:hidden}
+.closing .star{position:absolute;left:-40px;bottom:-50px;width:240px;opacity:.1}
+.closing h2{font-weight:800;font-size:clamp(1.8rem,3.4vw,2.8rem);letter-spacing:-.02em;max-width:20ch}
+.closing p{margin-top:20px;opacity:.82;max-width:58ch;font-size:1.05rem}
+.next{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.next .c{background:rgba(255,253,233,.06);border:1px solid rgba(255,253,233,.14);border-radius:16px;padding:24px}
+.next .c .n{font-family:'Sora';font-weight:800;color:var(--butter);font-size:1.4rem;margin-bottom:10px}
+.next .c p{margin:0;font-size:.92rem;opacity:.85}
+.contact-row{margin-top:46px;display:flex;gap:30px;flex-wrap:wrap;font-size:.92rem;opacity:.85;border-top:1px solid rgba(255,253,233,.14);padding-top:30px}
+.contact-row b{font-family:'Sora'}
+
+/* animations + palettes */
+.anim-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.anim-card{background:var(--cream);border:1px solid rgba(53,30,40,.12);border-radius:18px;overflow:hidden}
+.anim-frame{display:flex;align-items:center;justify-content:center;padding:24px}
+.anim-frame.cream{background:#fffde9}.anim-frame.ink{background:#351e28}
+.anim-frame img{width:100%;max-width:440px;border-radius:10px}
+.anim-meta{padding:22px 24px;border-top:1px solid rgba(53,30,40,.1)}
+.anim-meta h4{font-size:1.1rem;margin-bottom:6px}
+.anim-meta p{font-size:.92rem;color:var(--graphite)}
+.anim-meta .file{display:inline-block;margin-top:12px;font-size:.78rem;font-family:'Sora';font-weight:600;color:var(--wine);background:rgba(107,33,55,.08);padding:6px 12px;border-radius:20px}
+.pal-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.pal-tag{font-family:'Sora';font-weight:700;font-size:.85rem;margin-bottom:12px;color:var(--ink)}
+@media(max-width:1000px){.anim-grid,.pal-grid{grid-template-columns:1fr}}
+
+@media print{
+  body{background:#fff}
+  .block{break-inside:avoid;page-break-inside:avoid}
+  .notes{position:static}
+}
+@media(max-width:1000px){
+  .grid{grid-template-columns:1fr}
+  .notes{position:static}
+  .wrap{padding:0 26px}
+  .next{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<section class="cover">
+  <img class="star" src="assets/img/star-cream.svg" alt=""/>
+  <div class="wrap">
+    <div class="logo">
+      <svg viewBox="0 0 100 100"><defs><linearGradient id="d" x1="0" y1="0" x2="0" y2="1"><stop offset="50%" stop-color="#fffde9"/><stop offset="50%" stop-color="#ffb7b7"/></linearGradient></defs><text x="2" y="80" font-family="Sora" font-weight="800" font-size="96" fill="url(#d)">D.</text></svg>
+      Drafted
+    </div>
+    <span class="tag">Rascunho · v2 · animações + 2 paletas</span>
+    <h1>Landing Page — proposta de estrutura &amp; design</h1>
+    <p class="sub">Este é um <b>rascunho de alta fidelidade</b> da nova landing page da Drafted. Cada seção abaixo mostra o preview, o objetivo, a copy usada e sugestões. Use os espaços de <b>comentário</b> para validar, ajustar ou enviar suas copies definitivas.</p>
+    <div class="cover-meta">
+      <div><div class="k">Cliente</div>Isabela Ortunho · Drafted.ai</div>
+      <div><div class="k">Marca</div>The next gen PR for the AI era</div>
+      <div><div class="k">Entregável</div>Protótipo navegável + board anotado</div>
+      <div><div class="k">Status</div>Aguardando comentários &amp; copies</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEGEND ============ -->
+<section class="legend">
+  <div class="wrap">
+    <div>
+      <h3>Como ler este documento</h3>
+      <p>À esquerda, o preview real de cada seção. À direita, as anotações: o que a seção entrega, a copy aplicada e o que precisa da sua validação.</p>
+    </div>
+    <div class="legend-keys">
+      <span class="lk"><span class="sw" style="background:var(--butter)"></span> Decisão / sugestão</span>
+      <span class="lk"><span class="sw" style="background:var(--rose)"></span> Precisa da sua copy</span>
+      <span class="lk"><span class="sw" style="background:var(--sky)"></span> Dado a confirmar</span>
+      <span class="lk"><span class="sw" style="border:1.5px dashed var(--graphite);background:transparent"></span> Seu comentário</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 HERO ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="block-num">01</span>
+      <span class="block-chip">Hero Section</span>
+      <span class="desc">Primeira dobra. Em 5 segundos: quem é a Drafted, o que entrega e o CTA principal (agendar diagnóstico).</span>
+    </div>
+    <div class="grid">
+      <div class="frame">
+        <div class="frame-bar"><div class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><span class="url">drafted.com.br</span></div>
+        <img src="assets/img/sec-hero.png" alt="Preview da Hero Section"/>
+      </div>
+      <div class="notes">
+        <div class="note">
+          <h4><span class="ic"></span> O que tem nesta seção</h4>
+          <ul>
+            <li>Badge "The next gen PR · for the AI era"</li>
+            <li>Headline (EN) + destaque em "AI era"</li>
+            <li>Subheadline (PT) com a proposta de valor</li>
+            <li>2 CTAs: <b>Agendar diagnóstico</b> + Ver como funciona</li>
+            <li>Cards: Drafted Score™ e menções monitoradas</li>
+            <li>Mascote estrela + chips de IA</li>
+          </ul>
+        </div>
+        <div class="note">
+          <h4><span class="ic"></span> Copy aplicada</h4>
+          <p class="copytext">"Next-gen PR for the AI era" — "Construímos reputação, autoridade e influência para que sua marca seja encontrada, recomendada e confiável. Por humanos e por IA."</p>
+        </div>
+        <div class="sticky sky"><span class="tagn">Dado a confirmar</span>Os números dos cards (Score 87 · 2.400 menções) são ilustrativos. Trocar por dados reais ou ajustar o conceito.</div>
+        <div class="sticky butter alt"><span class="tagn">Sugestão</span>O "Drafted Score™" virou também um elemento visual da hero. Validar se quer destacar o score já aqui.</div>
+        <div class="sticky rose"><span class="tagn">É animado ✦</span>O mascote estrela respira, pisca e balança as perninhas. Veja o GIF na seção "Animações".</div>
+        <div class="comment"><h4>✎ Comentário</h4><div class="lines"><i></i><i></i><i></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 SHIFT ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="block-num">02</span>
+      <span class="block-chip">A Virada / Manifesto</span>
+      <span class="desc">Declaração editorial que ancora o "porquê" — baseada no texto "Sobre a Marca" do brand book.</span>
+    </div>
+    <div class="grid">
+      <div class="frame">
+        <div class="frame-bar"><div class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><span class="url">drafted.com.br/#a-virada</span></div>
+        <img src="assets/img/sec-shift.png" alt="Preview da seção A Virada"/>
+      </div>
+      <div class="notes">
+        <div class="note">
+          <h4><span class="ic"></span> O que tem nesta seção</h4>
+          <ul>
+            <li>Bloco escuro de destaque (contraste editorial)</li>
+            <li>Frase-manifesto com palavras em rosa</li>
+            <li>2 estatísticas de apoio</li>
+          </ul>
+        </div>
+        <div class="note">
+          <h4><span class="ic"></span> Copy aplicada</h4>
+          <p class="copytext">"Marcas não competem apenas por atenção. Competem por interpretação. Em uma era onde pessoas perguntam às IAs antes de decidir, reputação deixou de ser percepção — virou infraestrutura."</p>
+        </div>
+        <div class="sticky sky"><span class="tagn">Dado a confirmar</span>"73%" e "1 em 3" são placeholders. Se tiver fontes/estatísticas reais, substituímos.</div>
+        <div class="comment"><h4>✎ Comentário</h4><div class="lines"><i></i><i></i><i></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 WHAT ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="block-num">03</span>
+      <span class="block-chip">O que fazemos · 4 pilares</span>
+      <span class="desc">As quatro frentes do serviço, exatamente como descritas no onboarding.</span>
+    </div>
+    <div class="grid">
+      <div class="frame">
+        <div class="frame-bar"><div class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><span class="url">drafted.com.br/#o-que-fazemos</span></div>
+        <img src="assets/img/sec-what.png" alt="Preview da seção O que fazemos"/>
+      </div>
+      <div class="notes">
+        <div class="note">
+          <h4><span class="ic"></span> Os 4 pilares (do forms)</h4>
+          <ul>
+            <li>Diagnóstico reputacional completo</li>
+            <li>Monitoramento em digital &amp; IA</li>
+            <li>Definição de prioridades estratégicas</li>
+            <li>Gestão contínua da reputação</li>
+          </ul>
+        </div>
+        <div class="sticky butter"><span class="tagn">Sugestão</span>Cards com hover (escurecem ao passar o mouse). Ícones lineares — podem virar ilustrações próprias da marca depois.</div>
+        <div class="sticky rose alt"><span class="tagn">Precisa de você</span>Os textos de apoio de cada pilar são sugestões. Pode enviar a descrição oficial de cada um.</div>
+        <div class="comment"><h4>✎ Comentário</h4><div class="lines"><i></i><i></i><i></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 PRODUCTS ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="block-num">04</span>
+      <span class="block-chip">Produtos</span>
+      <span class="desc">Drafted Intelligence™ e Drafted Execution™ — os dois produtos do onboarding.</span>
+    </div>
+    <div class="grid">
+      <div class="frame">
+        <div class="frame-bar"><div class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><span class="url">drafted.com.br/#produtos</span></div>
+        <img src="assets/img/sec-products.png" alt="Preview da seção Produtos"/>
+      </div>
+      <div class="notes">
+        <div class="note">
+          <h4><span class="ic"></span> Copy aplicada (do forms)</h4>
+          <p class="copytext"><b>Drafted Intelligence™</b> — Diagnóstico, monitoramento e direcionamento estratégico da reputação da marca.<br><br><b>Drafted Execution™</b> — Implementação e acompanhamento das ações necessárias para fortalecer a reputação.</p>
+        </div>
+        <div class="sticky rose"><span class="tagn">Precisa de você</span>Os bullets dentro de cada produto são desdobramentos sugeridos. Confirme o que entra em cada um.</div>
+        <div class="comment"><h4>✎ Comentário</h4><div class="lines"><i></i><i></i><i></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 METHOD ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="block-num">05</span>
+      <span class="block-chip">Método · como funciona</span>
+      <span class="desc">A jornada em 4 etapas — inspirada nas referências de step-by-step (backtofuture/method).</span>
+    </div>
+    <div class="grid">
+      <div class="frame">
+        <div class="frame-bar"><div class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><span class="url">drafted.com.br/#metodo</span></div>
+        <img src="assets/img/sec-method.png" alt="Preview da seção Método"/>
+      </div>
+      <div class="notes">
+        <div class="note">
+          <h4><span class="ic"></span> As 4 etapas</h4>
+          <ul>
+            <li>01 · Diagnóstico</li>
+            <li>02 · Monitoramento</li>
+            <li>03 · Prioridades</li>
+            <li>04 · Gestão contínua</li>
+          </ul>
+        </div>
+        <div class="sticky butter"><span class="tagn">Sugestão</span>Na versão final, esta seção pode ganhar animação de scroll (cada etapa "acende" ao rolar), como nas referências enviadas.</div>
+        <div class="comment"><h4>✎ Comentário</h4><div class="lines"><i></i><i></i><i></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 NETWORK ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="block-num">06</span>
+      <span class="block-chip">Conexões · animação</span>
+      <span class="desc">Bloco animado que ilustra a marca sendo lida por humanos e por IA — o conceito central da Drafted.</span>
+    </div>
+    <div class="grid">
+      <div class="frame">
+        <div class="frame-bar"><div class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><span class="url">drafted.com.br/#conexoes</span></div>
+        <img src="assets/img/sec-network.png" alt="Preview da seção de conexões"/>
+      </div>
+      <div class="notes">
+        <div class="note">
+          <h4><span class="ic"></span> O que tem nesta seção</h4>
+          <ul>
+            <li>Drafted no centro, plataformas e IAs ao redor</li>
+            <li>Pulsos viajando pelas linhas (menções/sinais)</li>
+            <li>Nós flutuando + anel pulsante no centro</li>
+          </ul>
+        </div>
+        <div class="sticky butter"><span class="tagn">É animado ✦</span>Esta seção tem movimento. Veja o GIF logo abaixo (seção "Animações") ou abra o protótipo no navegador.</div>
+        <div class="sticky sky alt"><span class="tagn">Sugestão</span>As plataformas mostradas (ChatGPT, Gemini, Google, Perplexity, IG, LinkedIn) são exemplos — dá pra trocar pelas que fizerem mais sentido.</div>
+        <div class="comment"><h4>✎ Comentário</h4><div class="lines"><i></i><i></i><i></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 PROOF ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="block-num">07</span>
+      <span class="block-chip">Por que agora · prova</span>
+      <span class="desc">Bloco de credibilidade: números de impacto + citação do manifesto da marca.</span>
+    </div>
+    <div class="grid">
+      <div class="frame">
+        <div class="frame-bar"><div class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><span class="url">drafted.com.br/#por-que-agora</span></div>
+        <img src="assets/img/sec-proof.png" alt="Preview da seção Por que agora"/>
+      </div>
+      <div class="notes">
+        <div class="note">
+          <h4><span class="ic"></span> O que tem nesta seção</h4>
+          <ul>
+            <li>3 estatísticas com contador animado</li>
+            <li>Citação do manifesto Drafted</li>
+          </ul>
+        </div>
+        <div class="sticky sky"><span class="tagn">Dado a confirmar</span>Os números (3x · 24/7 · 100%) são ilustrativos. Espaço ideal para logos de clientes / depoimentos reais quando houver.</div>
+        <div class="badge-info">💡 Ótimo lugar para prova social futura</div>
+        <div class="comment"><h4>✎ Comentário</h4><div class="lines"><i></i><i></i><i></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 CONTACT / KAU ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="block-num">08</span>
+      <span class="block-chip">Agendamento · CTA final</span>
+      <span class="desc">A conversão principal: agendar o diagnóstico via embed do calendário KAU.AI.</span>
+    </div>
+    <div class="grid">
+      <div class="frame">
+        <div class="frame-bar"><div class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><span class="url">drafted.com.br/#agendar</span></div>
+        <img src="assets/img/sec-contact.png" alt="Preview da seção de Agendamento"/>
+      </div>
+      <div class="notes">
+        <div class="note">
+          <h4><span class="ic"></span> O que tem nesta seção</h4>
+          <ul>
+            <li>Copy de fechamento + benefícios do diagnóstico</li>
+            <li>Bloco do calendário (lado direito)</li>
+          </ul>
+        </div>
+        <div class="sticky rose"><span class="tagn">Pendente · juntos</span>Aqui entra o <b>embed do KAU.AI</b>. Deixei um placeholder estilizado — assim que tivermos o link, plugamos o agendamento real nesse espaço.</div>
+        <div class="comment"><h4>✎ Comentário</h4><div class="lines"><i></i><i></i><i></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANIMATIONS ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="block-num">✦</span>
+      <span class="block-chip">Animações &amp; interatividade</span>
+      <span class="desc">Pontos com movimento. No navegador eles rodam de verdade; aqui ficam os GIFs pra você ver no Figma/PDF.</span>
+    </div>
+    <div class="anim-grid">
+      <div class="anim-card">
+        <div class="anim-frame cream"><img src="deliverables/anim/mascot.gif" alt="Animação do mascote"/></div>
+        <div class="anim-meta">
+          <h4>Mascote do Hero</h4>
+          <p>Respira, pisca e balança as perninhas. Dá personalidade e tira a "cara de IA".</p>
+          <span class="file">▶ deliverables/anim/mascot.mp4 · .gif</span>
+        </div>
+      </div>
+      <div class="anim-card">
+        <div class="anim-frame ink"><img src="deliverables/anim/network.gif" alt="Animação de conexões"/></div>
+        <div class="anim-meta">
+          <h4>Conexões (humanos + IA)</h4>
+          <p>Pulsos viajam das plataformas até a marca no centro. Ilustra a reputação sendo lida e monitorada.</p>
+          <span class="file">▶ deliverables/anim/network.mp4 · .gif</span>
+        </div>
+      </div>
+    </div>
+    <div class="sticky butter" style="margin-top:24px;display:inline-block">✦ Outros micro-movimentos: contadores que sobem, cards que reagem ao mouse, revelação suave ao rolar, marquee "Reputação é infraestrutura".</div>
+  </div>
+</section>
+
+<!-- ============ PALETTES ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="block-num">◑</span>
+      <span class="block-chip">Variações de paleta</span>
+      <span class="desc">Duas versões pra você escolher — a creme/vinho do brand book e uma neutra/branca mais clean.</span>
+    </div>
+    <div class="pal-grid">
+      <div>
+        <div class="pal-tag">Versão A · Creme &amp; Vinho (brand book)</div>
+        <div class="frame"><div class="frame-bar"><div class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><span class="url">index.html</span></div><img src="assets/img/sec-hero.png" alt="Hero creme"/></div>
+      </div>
+      <div>
+        <div class="pal-tag">Versão B · Neutra / Branca</div>
+        <div class="frame"><div class="frame-bar"><div class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><span class="url">index-light.html</span></div><img src="assets/img/sec-hero-light.png" alt="Hero neutro"/></div>
+      </div>
+    </div>
+    <div class="comment" style="margin-top:24px"><h4>✎ Qual paleta você prefere? (ou misturar?)</h4><div class="lines"><i></i><i></i></div></div>
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="closing">
+  <img class="star" src="assets/img/star-cream.svg" alt=""/>
+  <div class="wrap">
+    <h2>Próximos passos</h2>
+    <p>Comente diretamente neste board (ou no Figma) o que ajustar. Com seus comentários e copies definitivas, fechamos a v2 e partimos para o site dinâmico final.</p>
+    <div class="next">
+      <div class="c"><div class="n">1 · Você</div><p>Revisa cada seção, deixa comentários e envia as copies oficiais.</p></div>
+      <div class="c"><div class="n">2 · KAU.AI</div><p>Definimos juntos a melhor forma de embutir o agendamento.</p></div>
+      <div class="c"><div class="n">3 · Drafted</div><p>Aplicamos os ajustes e entregamos a landing page final, responsiva e animada.</p></div>
+    </div>
+    <div class="contact-row">
+      <span><b>São Paulo</b> · +55 11 91991-1706</span>
+      <span><b>IG</b> @drafted.ag</span>
+      <span><b>LinkedIn</b> /company/drafted-co</span>
+      <span><b>Web</b> drafted.com.br</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

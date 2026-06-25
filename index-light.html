@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Drafted — The next gen PR for the AI era</title>
+<meta name="description" content="Construímos reputação, autoridade e influência para que sua marca seja encontrada, recomendada e confiável. Por humanos e por IA." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#351e28; --wine:#6b2137; --cream:#fffde9;
+  --rose:#ffb7b7; --butter:#d0c360; --sky:#b7d8ff; --paper:#f7f7f5; --graphite:#4f4f4f;
+  --wine-soft:#7d2a43;
+  --max:1240px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',system-ui,sans-serif;
+  background:var(--cream); color:var(--ink);
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  line-height:1.6;
+}
+.serif,h1,h2,h3,.display{font-family:'Sora',sans-serif;}
+::selection{background:var(--wine);color:var(--cream)}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 28px}
+
+/* grain overlay */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.35;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* ---------- NAV ---------- */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .4s var(--ease);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;
+  margin:18px auto;width:calc(100% - 40px);max-width:var(--max);
+  padding:12px 14px 12px 22px;border-radius:60px;
+  background:rgba(255,253,233,.72);backdrop-filter:blur(14px);
+  border:1px solid rgba(53,30,40,.10);transition:all .4s var(--ease);}
+.nav.scrolled .nav-inner{box-shadow:0 10px 40px -18px rgba(53,30,40,.4);background:rgba(255,253,233,.92);}
+.logo{display:flex;align-items:center;gap:9px;font-family:'Sora';font-weight:800;font-size:1.42rem;letter-spacing:-.02em}
+.logo svg{width:30px;height:30px}
+.nav-links{display:flex;gap:30px;font-size:.93rem;font-weight:500}
+.nav-links a{position:relative;padding:4px 0;color:var(--ink);opacity:.8;transition:opacity .25s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--wine);transition:width .3s var(--ease)}
+.nav-links a:hover{opacity:1}.nav-links a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:'Sora';font-weight:600;font-size:.92rem;
+  padding:13px 24px;border-radius:50px;cursor:pointer;border:none;transition:transform .25s var(--ease),background .25s,box-shadow .25s;white-space:nowrap}
+.btn-primary{background:var(--wine);color:var(--cream)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(107,33,55,.7)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid rgba(53,30,40,.25)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn-cream{background:var(--cream);color:var(--ink)}
+.btn-cream:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(0,0,0,.5)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.menu-btn{display:none}
+.nav-btn .short{display:none}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:178px 0 90px;overflow:hidden}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;font-size:.8rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  background:rgba(107,33,55,.08);color:var(--wine);padding:8px 16px;border-radius:40px;margin-bottom:30px;border:1px solid rgba(107,33,55,.18)}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--wine);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.hero h1{font-weight:800;font-size:clamp(3rem,8.2vw,7rem);line-height:.93;letter-spacing:-.035em;max-width:14ch}
+.hero h1 .accent{color:var(--wine);position:relative;display:inline-block}
+.hero h1 .accent svg{position:absolute;left:-2%;bottom:-12px;width:104%;height:18px}
+.hero-sub{font-size:clamp(1.05rem,1.7vw,1.32rem);max-width:46ch;margin:32px 0 40px;color:var(--graphite);font-weight:400}
+.hero-sub b{color:var(--ink);font-weight:600}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.hero-actions .btn{padding:17px 30px;font-size:1rem}
+.hero-trust{margin-top:46px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;color:var(--graphite);font-size:.86rem}
+.hero-trust .pipe{width:1px;height:18px;background:rgba(53,30,40,.2)}
+.hero-stars-row{display:flex;gap:4px}
+.hero-stars-row svg{width:17px;height:17px}
+
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero-visual{position:relative;height:100%;min-height:420px}
+.blob{position:absolute;border-radius:50%;filter:blur(2px)}
+.hero-card{position:absolute;background:var(--ink);color:var(--cream);border-radius:26px;padding:26px;width:280px;box-shadow:0 30px 60px -28px rgba(53,30,40,.6)}
+.hero-card.c1{top:6%;right:0;z-index:3}
+.hero-card.c2{bottom:2%;left:-6%;background:var(--cream);color:var(--ink);border:1.5px solid rgba(53,30,40,.12);z-index:4;width:255px}
+.hero-card .lbl{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;opacity:.6;margin-bottom:10px;font-weight:600}
+.hero-card .big{font-family:'Sora';font-weight:800;font-size:2.5rem;line-height:1}
+.hero-card .desc{font-size:.84rem;margin-top:8px;opacity:.78}
+.score-bar{height:7px;border-radius:10px;background:rgba(255,253,233,.18);margin-top:16px;overflow:hidden}
+.score-bar i{display:block;height:100%;width:0;border-radius:10px;background:linear-gradient(90deg,var(--rose),var(--butter));transition:width 1.6s var(--ease)}
+.star-float{position:absolute;width:200px;left:50%;top:42%;transform:translate(-50%,-50%);z-index:2;will-change:transform;filter:drop-shadow(0 22px 30px rgba(107,33,55,.35))}
+.ai-chip{position:absolute;background:var(--cream);border:1.5px solid rgba(53,30,40,.14);border-radius:14px;padding:9px 14px;font-size:.8rem;font-weight:500;display:flex;align-items:center;gap:8px;box-shadow:0 12px 26px -16px rgba(53,30,40,.5);z-index:5}
+.ai-chip .av{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:.72rem;color:#fff}
+.ai-chip.a1{top:0;left:2%}.ai-chip.a2{bottom:12%;right:-2%}
+
+/* ---------- MARQUEE ---------- */
+.marquee{background:var(--ink);color:var(--cream);padding:22px 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:46px;animation:scrollx 28s linear infinite;will-change:transform}
+.marquee span{font-family:'Sora';font-weight:700;font-size:1.5rem;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:46px;opacity:.92}
+.marquee .star{width:22px;height:22px}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+
+/* ---------- SECTION SHELL ---------- */
+section{position:relative}
+.sec{padding:120px 0}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:'Sora';font-weight:600;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wine);margin-bottom:22px}
+.kicker::before{content:"";width:26px;height:2px;background:var(--wine)}
+h2.title{font-weight:800;font-size:clamp(2.1rem,4.6vw,3.6rem);line-height:1.02;letter-spacing:-.03em;max-width:18ch}
+.lead{font-size:1.12rem;color:var(--graphite);max-width:54ch;margin-top:22px}
+
+/* ---------- SHIFT (editorial statement) ---------- */
+.shift{background:var(--ink);color:var(--cream);border-radius:40px;margin:0 auto;}
+.shift .wrap{padding:110px 60px}
+.shift .kicker{color:var(--rose)}.shift .kicker::before{background:var(--rose)}
+.shift-quote{font-family:'Sora';font-weight:700;font-size:clamp(1.8rem,3.6vw,3rem);line-height:1.18;letter-spacing:-.02em;max-width:20ch}
+.shift-quote em{font-style:normal;color:var(--rose)}
+.shift-quote .u{position:relative;white-space:nowrap}
+.shift-foot{margin-top:48px;display:flex;gap:50px;flex-wrap:wrap}
+.shift-foot div{max-width:30ch}
+.shift-foot .n{font-family:'Sora';font-weight:800;font-size:2.6rem;color:var(--butter);line-height:1}
+.shift-foot p{margin-top:8px;font-size:.95rem;opacity:.8}
+
+/* ---------- PILLARS ---------- */
+.pillars-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:56px}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pcard{background:var(--paper);border:1px solid rgba(53,30,40,.08);border-radius:24px;padding:34px 28px;transition:transform .4s var(--ease),background .4s,color .4s;position:relative;overflow:hidden;min-height:280px;display:flex;flex-direction:column}
+.pcard:hover{transform:translateY(-8px);background:var(--ink);color:var(--cream)}
+.pcard .ic{width:54px;height:54px;border-radius:15px;background:var(--cream);display:grid;place-items:center;margin-bottom:auto;border:1px solid rgba(53,30,40,.1);transition:.4s}
+.pcard:hover .ic{background:rgba(255,253,233,.12);border-color:transparent}
+.pcard .ic svg{width:26px;height:26px;stroke:var(--wine);transition:.4s}
+.pcard:hover .ic svg{stroke:var(--rose)}
+.pcard h3{font-weight:700;font-size:1.22rem;margin:26px 0 10px;letter-spacing:-.01em}
+.pcard p{font-size:.92rem;color:var(--graphite);transition:.4s}
+.pcard:hover p{color:rgba(255,253,233,.8)}
+.pcard .num{position:absolute;top:24px;right:26px;font-family:'Sora';font-weight:800;font-size:.9rem;opacity:.25}
+
+/* ---------- PRODUCTS ---------- */
+.products{background:var(--paper)}
+.prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:60px}
+.prod{border-radius:30px;padding:48px;position:relative;overflow:hidden;min-height:440px;display:flex;flex-direction:column;transition:transform .4s var(--ease)}
+.prod:hover{transform:translateY(-6px)}
+.prod.intel{background:var(--wine);color:var(--cream)}
+.prod.exec{background:var(--ink);color:var(--cream)}
+.prod .tm{font-family:'Sora';font-weight:800;font-size:clamp(1.8rem,3vw,2.5rem);letter-spacing:-.02em;display:flex;align-items:baseline;gap:4px}
+.prod .tm sup{font-size:.9rem;opacity:.6;font-weight:600}
+.prod .tag{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;opacity:.7;margin-bottom:20px}
+.prod p.d{font-size:1.05rem;margin:18px 0 30px;opacity:.9;max-width:38ch}
+.prod ul{list-style:none;margin-top:auto;display:flex;flex-direction:column;gap:13px}
+.prod li{display:flex;gap:12px;align-items:flex-start;font-size:.95rem;opacity:.92}
+.prod li svg{width:20px;height:20px;flex-shrink:0;margin-top:2px}
+.prod .pstar{position:absolute;width:150px;right:-30px;top:-30px;opacity:.14}
+.prod .arrow{margin-top:28px;display:inline-flex;align-items:center;gap:9px;font-family:'Sora';font-weight:600;font-size:.95rem}
+.prod .arrow svg{width:18px;height:18px;transition:transform .3s}
+.prod:hover .arrow svg{transform:translateX(5px)}
+
+/* ---------- METHOD ---------- */
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:64px;border-top:2px solid rgba(53,30,40,.12)}
+.step{padding:36px 28px 36px 0;position:relative;border-right:1px solid rgba(53,30,40,.1)}
+.step:last-child{border-right:none;padding-right:0}
+.step .dot{position:absolute;top:-9px;left:0;width:16px;height:16px;border-radius:50%;background:var(--cream);border:3px solid var(--wine)}
+.step .st{font-family:'Sora';font-weight:800;font-size:.85rem;color:var(--wine);letter-spacing:.08em;margin-bottom:18px}
+.step h3{font-weight:700;font-size:1.3rem;margin-bottom:10px;letter-spacing:-.01em}
+.step p{font-size:.9rem;color:var(--graphite)}
+
+/* ---------- STATS / proof ---------- */
+.proof{background:var(--ink);color:var(--cream)}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:70px}
+.stat{text-align:left}
+.stat .n{font-family:'Sora';font-weight:800;font-size:clamp(3rem,5.5vw,4.6rem);line-height:1;letter-spacing:-.03em;background:linear-gradient(120deg,var(--rose),var(--butter));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat p{margin-top:14px;opacity:.78;font-size:.98rem;max-width:26ch}
+.proof .kicker{color:var(--sky)}.proof .kicker::before{background:var(--sky)}
+.proof h2.title{max-width:24ch}
+
+.quote-block{margin-top:80px;border-top:1px solid rgba(255,253,233,.15);padding-top:54px;display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:start}
+.quote-block .qstar{width:74px;flex-shrink:0}
+.quote-block blockquote{font-family:'Sora';font-weight:600;font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.35;letter-spacing:-.01em}
+.quote-block cite{display:block;margin-top:22px;font-style:normal;font-size:.92rem;opacity:.65;font-family:'Poppins'}
+
+/* ---------- CTA / SCHEDULE ---------- */
+.cta{padding:130px 0}
+.cta-box{background:var(--wine);border-radius:40px;padding:0;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;color:var(--cream)}
+.cta-left{padding:64px 56px}
+.cta-left h2{font-weight:800;font-size:clamp(2rem,3.6vw,3rem);line-height:1.04;letter-spacing:-.03em}
+.cta-left p{margin:22px 0 34px;opacity:.88;font-size:1.05rem;max-width:34ch}
+.cta-points{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:30px}
+.cta-points li{display:flex;gap:11px;align-items:center;font-size:.96rem}
+.cta-points svg{width:19px;height:19px}
+.cta-right{background:rgba(53,30,40,.35);padding:40px;display:flex;flex-direction:column;border-left:1px solid rgba(255,253,233,.12)}
+.kau-embed{flex:1;border:2px dashed rgba(255,253,233,.4);border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 28px;gap:16px;min-height:380px;position:relative;background:rgba(255,253,233,.04)}
+.kau-embed .badge{position:absolute;top:16px;left:16px;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;background:var(--butter);color:var(--ink);padding:5px 11px;border-radius:30px}
+.kau-embed .cal{width:64px;height:64px;opacity:.9}
+.kau-embed h4{font-family:'Sora';font-weight:700;font-size:1.3rem}
+.kau-embed p{font-size:.9rem;opacity:.8;max-width:30ch}
+.kau-embed .fake-slots{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.kau-embed .fake-slots span{font-size:.8rem;padding:7px 13px;border-radius:30px;border:1px solid rgba(255,253,233,.3);font-weight:500}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:860px;margin:0 auto}
+.faq-item{border-bottom:1px solid rgba(53,30,40,.14)}
+.faq-q{width:100%;background:none;border:none;text-align:left;cursor:pointer;padding:28px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;font-family:'Sora';font-weight:600;font-size:1.2rem;color:var(--ink)}
+.faq-q .pm{width:30px;height:30px;border-radius:50%;border:1.5px solid rgba(53,30,40,.25);display:grid;place-items:center;flex-shrink:0;transition:.3s;font-size:1.2rem}
+.faq-item.open .pm{background:var(--wine);color:var(--cream);border-color:var(--wine);transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.faq-a p{padding:0 0 28px;color:var(--graphite);max-width:64ch}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--ink);color:var(--cream);padding:90px 0 36px;position:relative;overflow:hidden}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:60px;border-bottom:1px solid rgba(255,253,233,.14)}
+.foot-brand .logo{color:var(--cream);font-size:1.8rem;margin-bottom:18px}
+.foot-brand p{opacity:.7;font-size:.95rem;max-width:34ch}
+.foot-col h5{font-family:'Sora';font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;opacity:.55;margin-bottom:18px}
+.foot-col a{display:block;padding:7px 0;opacity:.85;font-size:.95rem;transition:opacity .2s}
+.foot-col a:hover{opacity:1;color:var(--rose)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:28px;font-size:.85rem;opacity:.6}
+.foot-star{position:absolute;right:-40px;bottom:-50px;width:260px;opacity:.08}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+
+/* ---------- animated mascot ---------- */
+.mascot{width:100%;height:100%;overflow:visible;transform-origin:50% 72%;animation:bob 3.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-10px) rotate(-2.2deg)}50%{transform:translateY(-3px) rotate(0deg)}75%{transform:translateY(-10px) rotate(2.2deg)}}
+.m-body{transform-origin:50% 50%;animation:mpulse 3.6s ease-in-out infinite}
+@keyframes mpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.018)}}
+.m-eye{transform-box:fill-box;transform-origin:center;animation:blink 4.8s infinite}
+@keyframes blink{0%,91%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+.m-leg{transform-box:fill-box;transform-origin:top center}
+.m-leg.l{animation:swingL 3.6s ease-in-out infinite}
+.m-leg.r{animation:swingR 3.6s ease-in-out infinite}
+@keyframes swingL{0%,100%{transform:rotate(3deg)}50%{transform:rotate(-4deg)}}
+@keyframes swingR{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(4deg)}}
+
+/* ---------- connections viz ---------- */
+.network{background:var(--ink);color:var(--cream)}
+.network .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}
+.network .kicker{color:var(--sky)}.network .kicker::before{background:var(--sky)}
+.network h2.title{color:var(--cream)}
+.network .lead{color:rgba(255,253,233,.78)}
+.network-legend{margin-top:30px;display:flex;flex-direction:column;gap:14px}
+.network-legend li{display:flex;gap:12px;align-items:center;font-size:.95rem;list-style:none}
+.network-legend .d{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.conn{width:100%;height:auto;display:block}
+.link{stroke:rgba(255,183,183,.32);stroke-width:1.6;stroke-dasharray:5 6;animation:dash 9s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-110}}
+.pulse{fill:var(--rose)}
+.node{transform-box:fill-box;transform-origin:center;animation:nfloat 5s ease-in-out infinite}
+.node-chip{fill:var(--cream);stroke:rgba(255,253,233,.2)}
+.node-label{font-family:'Sora';font-weight:700;font-size:13px;fill:var(--ink)}
+.node-dot{animation:halo 3s ease-in-out infinite}
+@keyframes halo{0%,100%{opacity:.3}50%{opacity:.85}}
+@keyframes nfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.center-ring{fill:none;stroke:var(--rose);stroke-width:1.5;animation:ring 4s ease-out infinite}
+@keyframes ring{0%{r:58;opacity:.55}100%{r:118;opacity:0}}
+.center-star{transform-origin:280px 230px;animation:spin 28s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){*{animation:none !important}}
+
+/* ---------- responsive ---------- */
+@media(max-width:1080px){
+  .pgrid{grid-template-columns:repeat(2,1fr)}
+  .method-grid{grid-template-columns:repeat(2,1fr)}
+  .step{border-right:none;border-bottom:1px solid rgba(53,30,40,.1);padding-right:24px}
+}
+@media(max-width:880px){
+  .nav-links{display:none}
+  .nav-inner{padding:10px 10px 10px 18px}
+  .nav-btn{padding:11px 18px;font-size:.85rem}
+  .nav-btn .full{display:none}.nav-btn .short{display:inline}
+  .logo{font-size:1.25rem}.logo svg{width:26px;height:26px}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-visual{min-height:340px;margin-top:30px}
+  .prod-grid{grid-template-columns:1fr}
+  .stat-grid{grid-template-columns:1fr;gap:40px}
+  .cta-box{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .shift .wrap{padding:70px 30px}
+  .sec{padding:84px 0}
+  .quote-block{grid-template-columns:1fr}
+  .network .wrap{grid-template-columns:1fr;gap:30px}
+}
+@media(max-width:560px){
+  .pgrid{grid-template-columns:1fr}.foot-top{grid-template-columns:1fr}
+  .cta-left,.cta-right{padding:36px 26px}
+  .hero{padding:140px 0 60px}
+}
+</style>
+<style id="theme-light-override">
+/* ===== TEMA NEUTRO / BRANCO ===== */
+.theme-light{--cream:#ffffff}
+.theme-light body,.theme-light{background:#ffffff}
+.theme-light .nav-inner{background:rgba(255,255,255,.78)}
+.theme-light .nav.scrolled .nav-inner{background:rgba(255,255,255,.95)}
+.theme-light .shift{background:var(--paper);color:var(--ink);border:1px solid rgba(53,30,40,.08)}
+.theme-light .shift .kicker{color:var(--wine)}
+.theme-light .shift .kicker::before{background:var(--wine)}
+.theme-light .shift-quote em{color:var(--wine)}
+.theme-light .shift-quote .u{color:var(--ink)}
+.theme-light .shift-foot .n{color:var(--wine)}
+.theme-light .shift-foot p{opacity:.7;color:var(--graphite)}
+.theme-light .network{background:var(--paper);color:var(--ink)}
+.theme-light .network h2.title{color:var(--ink)}
+.theme-light .network .lead{color:var(--graphite)}
+.theme-light .network .kicker{color:var(--wine)}
+.theme-light .network .kicker::before{background:var(--wine)}
+.theme-light .network-legend li{color:var(--ink)}
+.theme-light .link{stroke:rgba(107,33,55,.28)}
+.theme-light .pulse{fill:var(--wine)}
+.theme-light .center-ring{stroke:var(--wine)}
+.theme-light .node-chip{fill:#ffffff;stroke:rgba(53,30,40,.14)}
+.theme-light .conn defs radialGradient stop{stop-color:#6b2137}
+.theme-light .pcard{background:#fafafa}
+</style>
+</head>
+
+<body class="theme-light">
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo" aria-label="Drafted">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <defs><linearGradient id="duo" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="50%" stop-color="#351e28"/><stop offset="50%" stop-color="#6b2137"/>
+        </linearGradient></defs>
+        <text x="2" y="80" font-family="Sora,sans-serif" font-weight="800" font-size="96" fill="url(#duo)">D.</text>
+      </svg>
+      Drafted
+    </a>
+    <nav class="nav-links">
+      <a href="#shift">A virada</a>
+      <a href="#what">O que fazemos</a>
+      <a href="#products">Produtos</a>
+      <a href="#method">Método</a>
+      <a href="#contact">Contato</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary nav-btn"><span class="full">Agendar diagnóstico</span><span class="short">Agendar</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="hero-badge"><span class="dot"></span>The next gen PR · for the AI era</span>
+      <h1>Next-gen PR for the
+        <span class="accent">AI era
+          <svg viewBox="0 0 200 18" preserveAspectRatio="none"><path d="M2 13 Q 50 2 100 9 T 198 6" stroke="#6b2137" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+        </span>
+      </h1>
+      <p class="hero-sub">Construímos <b>reputação, autoridade e influência</b> para que sua marca seja encontrada, recomendada e confiável. <b>Por humanos e por IA.</b></p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Agendar diagnóstico →</a>
+        <a href="#method" class="btn btn-ghost">Ver como funciona</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-stars-row" aria-hidden="true"></div>
+        <span>Reputação que máquinas leem e pessoas confiam</span>
+        <span class="pipe"></span>
+        <span>São Paulo · global</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="star-float" id="starFloat">
+        <svg class="mascot" viewBox="0 0 600 640" fill="none" role="img" aria-label="Mascote estrela Drafted">
+          <g class="m-body">
+            <path fill="#6b2137" d="M 300,55 L 336.7,196.3 L 462.6,122.4 L 388.7,248.3 L 530,285 L 388.7,321.7 L 462.6,447.6 L 336.7,373.7 L 300,515 L 263.3,373.7 L 137.4,447.6 L 211.3,321.7 L 70,285 L 211.3,248.3 L 137.4,122.4 L 263.3,196.3 Z"/>
+            <ellipse class="m-eye" cx="255" cy="250" rx="17" ry="23" fill="#fffde9"/>
+            <ellipse class="m-eye" cx="345" cy="250" rx="17" ry="23" fill="#fffde9"/>
+            <path d="M250 300 Q 300 340 350 300" stroke="#fffde9" stroke-width="14" stroke-linecap="round" fill="none"/>
+          </g>
+          <g stroke="#6b2137" stroke-width="13" stroke-linecap="round" fill="none">
+            <path class="m-leg l" d="M256 470 C 244 540, 236 568, 240 596"/>
+            <path class="m-leg r" d="M344 470 C 356 540, 364 568, 360 596"/>
+          </g>
+          <circle cx="240" cy="604" r="13" fill="#6b2137"/>
+          <circle cx="360" cy="604" r="13" fill="#6b2137"/>
+        </svg>
+      </div>
+      <div class="hero-card c1" data-tilt>
+        <div class="lbl">Drafted Score™</div>
+        <div class="big" data-count="87">0</div>
+        <div class="desc">Índice de reputação da sua marca em ambientes de IA</div>
+        <div class="score-bar"><i data-w="87%"></i></div>
+      </div>
+      <div class="hero-card c2" data-tilt>
+        <div class="lbl">Menções monitoradas</div>
+        <div class="big"><span data-count="2400">0</span>+</div>
+        <div class="desc">por semana, em buscadores, redes e IAs</div>
+      </div>
+      <div class="ai-chip a1"><span class="av" style="background:#6b2137">AI</span> "Quem é a melhor opção?"</div>
+      <div class="ai-chip a2"><span class="av" style="background:#351e28">★</span> Recomendado pela IA</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MARQUEE ===================== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marq">
+    <span>Reputação é infraestrutura <img class="star" src="assets/img/star-cream.svg"/> Encontrada <img class="star" src="assets/img/star-cream.svg"/> Recomendada <img class="star" src="assets/img/star-cream.svg"/> Confiável <img class="star" src="assets/img/star-cream.svg"/> Por humanos e por IA <img class="star" src="assets/img/star-cream.svg"/> </span>
+    <span>Reputação é infraestrutura <img class="star" src="assets/img/star-cream.svg"/> Encontrada <img class="star" src="assets/img/star-cream.svg"/> Recomendada <img class="star" src="assets/img/star-cream.svg"/> Confiável <img class="star" src="assets/img/star-cream.svg"/> Por humanos e por IA <img class="star" src="assets/img/star-cream.svg"/> </span>
+  </div>
+</div>
+
+<!-- ===================== SHIFT ===================== -->
+<section class="sec" id="shift" style="padding-bottom:0">
+  <div class="wrap" style="padding:0 28px">
+    <div class="shift reveal">
+      <div class="wrap">
+        <span class="kicker">A virada · The shift</span>
+        <p class="shift-quote">Hoje, marcas não competem apenas por <em>atenção</em>. Competem por <span class="u">interpretação</span>. Em uma era onde pessoas perguntam às IAs antes de decidir, reputação deixou de ser percepção — <em>virou infraestrutura.</em></p>
+        <div class="shift-foot">
+          <div><div class="n">73%</div><p>das decisões de compra já passam por uma busca ou recomendação assistida por IA.</p></div>
+          <div><div class="n">1 em 3</div><p>marcas não sabe o que as IAs estão dizendo sobre elas neste momento.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHAT WE DO / PILLARS ===================== -->
+<section class="sec" id="what">
+  <div class="wrap">
+    <div class="pillars-head reveal">
+      <div>
+        <span class="kicker">O que fazemos</span>
+        <h2 class="title">Reputação, gerida como ativo estratégico.</h2>
+      </div>
+      <p class="lead">Quatro frentes que trabalham juntas para que sua marca seja compreendida, recomendada e confiável — para pessoas e para sistemas de IA.</p>
+    </div>
+    <div class="pgrid">
+      <div class="pcard reveal d1">
+        <span class="num">01</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+        <h3>Diagnóstico reputacional completo</h3>
+        <p>Mapeamos como sua marca é percebida hoje em ambientes digitais e de IA, com um score proprietário.</p>
+      </div>
+      <div class="pcard reveal d2">
+        <span class="num">02</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Monitoramento em digital &amp; IA</h3>
+        <p>Acompanhamento contínuo de menções, buscadores, redes e respostas de modelos de IA sobre sua marca.</p>
+      </div>
+      <div class="pcard reveal d3">
+        <span class="num">03</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+        <h3>Definição de prioridades</h3>
+        <p>Traduzimos dados em direção: o que atacar primeiro para mover a percepção onde mais importa.</p>
+      </div>
+      <div class="pcard reveal d4">
+        <span class="num">04</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.2-8.6"/><path d="M21 4v5h-5"/></svg></div>
+        <h3>Gestão contínua da reputação</h3>
+        <p>Execução e acompanhamento recorrentes para fortalecer autoridade e influência ao longo do tempo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRODUCTS ===================== -->
+<section class="sec products" id="products">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto">
+      <span class="kicker" style="justify-content:center">Produtos</span>
+      <h2 class="title" style="margin:0 auto">Dois motores. Uma reputação inquebrável.</h2>
+      <p class="lead" style="margin:22px auto 0">Da inteligência à execução — você escolhe começar pelo diagnóstico ou ir direto para a ação.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod intel reveal d1">
+        <img class="pstar" src="assets/img/star-cream.svg" alt=""/>
+        <div class="tag">Inteligência</div>
+        <div class="tm">Drafted Intelligence<sup>™</sup></div>
+        <p class="d">Diagnóstico, monitoramento e direcionamento estratégico da reputação da marca.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffb7b7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Drafted Score™ e diagnóstico reputacional</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffb7b7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Monitoramento em digital e IA</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffb7b7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Direcionamento e prioridades estratégicas</li>
+        </ul>
+        <a href="#contact" class="arrow">Conhecer Intelligence <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="prod exec reveal d2">
+        <img class="pstar" src="assets/img/star-cream.svg" alt=""/>
+        <div class="tag">Execução</div>
+        <div class="tm">Drafted Execution<sup>™</sup></div>
+        <p class="d">Implementação e acompanhamento das ações necessárias para fortalecer a reputação da marca.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#d0c360" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Execução das ações priorizadas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#d0c360" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Gestão contínua da reputação</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#d0c360" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Acompanhamento de resultados e evolução do score</li>
+        </ul>
+        <a href="#contact" class="arrow">Conhecer Execution <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== METHOD ===================== -->
+<section class="sec" id="method">
+  <div class="wrap">
+    <div class="reveal" style="max-width:620px">
+      <span class="kicker">Como funciona</span>
+      <h2 class="title">Um método, do diagnóstico à influência.</h2>
+    </div>
+    <div class="method-grid">
+      <div class="step reveal d1"><span class="dot"></span><div class="st">ETAPA 01</div><h3>Diagnóstico</h3><p>Mapeamos a reputação atual da marca e geramos o Drafted Score™ inicial.</p></div>
+      <div class="step reveal d2"><span class="dot"></span><div class="st">ETAPA 02</div><h3>Monitoramento</h3><p>Ativamos o acompanhamento contínuo em ambientes digitais e de IA.</p></div>
+      <div class="step reveal d3"><span class="dot"></span><div class="st">ETAPA 03</div><h3>Prioridades</h3><p>Definimos o que move a percepção primeiro e desenhamos o plano.</p></div>
+      <div class="step reveal d4"><span class="dot"></span><div class="st">ETAPA 04</div><h3>Gestão contínua</h3><p>Executamos, medimos e evoluímos a reputação ao longo do tempo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NETWORK / CONNECTIONS ===================== -->
+<section class="sec network" id="network">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="kicker">Onde sua marca aparece</span>
+      <h2 class="title">Uma reputação. Lida por humanos <em style="color:var(--rose);font-style:normal">e</em> por IA.</h2>
+      <p class="lead">Sua marca é interpretada em buscadores, redes e nos modelos de IA que as pessoas consultam antes de decidir. A Drafted conecta e fortalece todos esses pontos.</p>
+      <ul class="network-legend">
+        <li><span class="d" style="background:var(--rose)"></span> Pulsos = menções e sinais que a Drafted monitora em tempo real</li>
+        <li><span class="d" style="background:var(--sky)"></span> Nós = plataformas e IAs onde a reputação é construída</li>
+      </ul>
+    </div>
+    <div class="reveal d1">
+      <svg class="conn" viewBox="0 0 560 460" aria-label="Diagrama de conexões da marca com plataformas e IAs">
+        <defs><radialGradient id="glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffb7b7" stop-opacity=".30"/><stop offset="100%" stop-color="#ffb7b7" stop-opacity="0"/>
+        </radialGradient></defs>
+        <g id="net-links"></g>
+        <circle cx="280" cy="230" r="74" fill="url(#glow)"/>
+        <circle class="center-ring" cx="280" cy="230"/>
+        <circle cx="280" cy="230" r="50" fill="#6b2137"/>
+        <g class="center-star"><path fill="#fffde9" transform="translate(280,230) scale(0.135) translate(-300,-285)" d="M 300,55 L 336.7,196.3 L 462.6,122.4 L 388.7,248.3 L 530,285 L 388.7,321.7 L 462.6,447.6 L 336.7,373.7 L 300,515 L 263.3,373.7 L 137.4,447.6 L 211.3,321.7 L 70,285 L 211.3,248.3 L 137.4,122.4 L 263.3,196.3 Z"/></g>
+        <g id="net-nodes"></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROOF / STATS ===================== -->
+<section class="sec proof">
+  <div class="wrap">
+    <div class="reveal" style="max-width:680px">
+      <span class="kicker">Por que agora</span>
+      <h2 class="title">Quando as pessoas perguntam à IA, a sua marca precisa estar na resposta.</h2>
+    </div>
+    <div class="stat-grid">
+      <div class="stat reveal d1"><div class="n"><span data-count="3">0</span>x</div><p>mais chances de ser recomendada quando sua reputação é legível por IA.</p></div>
+      <div class="stat reveal d2"><div class="n"><span data-count="24">0</span>/7</div><p>de monitoramento da sua marca em buscadores, redes e modelos de IA.</p></div>
+      <div class="stat reveal d3"><div class="n"><span data-count="100">0</span>%</div><p>metodologia proprietária — score, dados e direção estratégica em um só lugar.</p></div>
+    </div>
+    <div class="quote-block reveal">
+      <img class="qstar" src="assets/img/star-cream.svg" alt=""/>
+      <div>
+        <blockquote>"A Drafted combina inteligência reputacional, análise de presença digital e metodologia proprietária de score para ajudar marcas a serem compreendidas, recomendadas e confiáveis — tanto para pessoas quanto para sistemas de IA."</blockquote>
+        <cite>— Manifesto Drafted</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA / SCHEDULE ===================== -->
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <div class="cta-left">
+        <span class="kicker" style="color:var(--rose)">Agende</span>
+        <h2>Vamos descobrir o que a IA diz sobre a sua marca.</h2>
+        <p>Comece pelo diagnóstico reputacional. Em uma conversa, mostramos onde sua marca está — e para onde pode ir.</p>
+        <ul class="cta-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffb7b7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Diagnóstico reputacional inicial</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffb7b7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Visão de presença em digital e IA</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffb7b7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Próximos passos estratégicos claros</li>
+        </ul>
+      </div>
+      <div class="cta-right">
+        <!-- KAU.AI scheduling embed goes here -->
+        <div class="kau-embed">
+          <span class="badge">Protótipo · KAU.AI</span>
+          <svg class="cal" viewBox="0 0 24 24" fill="none" stroke="#fffde9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+          <h4>Calendário de agendamento</h4>
+          <p>Aqui entra o embed do <b>KAU.AI</b> — o cliente escolhe dia e horário sem sair da página.</p>
+          <div class="fake-slots"><span>Seg 09:00</span><span>Ter 14:30</span><span>Qui 11:00</span><span>Sex 16:00</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;margin-bottom:50px">
+      <span class="kicker" style="justify-content:center">Dúvidas</span>
+      <h2 class="title" style="margin:0 auto">Perguntas frequentes</h2>
+    </div>
+    <div class="faq reveal">
+      <div class="faq-item"><button class="faq-q">O que é “PR para a era da IA”? <span class="pm">+</span></button><div class="faq-a"><p>É gerir a reputação da sua marca não só para pessoas, mas também para os sistemas de IA que hoje intermediam decisões. Quando alguém pergunta a uma IA, queremos que sua marca seja compreendida, recomendada e confiável.</p></div></div>
+      <div class="faq-item"><button class="faq-q">O que é o Drafted Score™? <span class="pm">+</span></button><div class="faq-a"><p>É a nossa metodologia proprietária de score reputacional. Ela traduz a presença e percepção da sua marca em ambientes digitais e de IA em um índice acompanhável ao longo do tempo.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Qual a diferença entre Intelligence e Execution? <span class="pm">+</span></button><div class="faq-a"><p>O Drafted Intelligence™ cuida do diagnóstico, monitoramento e direcionamento. O Drafted Execution™ implementa e acompanha as ações para fortalecer a reputação. Eles funcionam melhor juntos.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Para que tipo de marca a Drafted é indicada? <span class="pm">+</span></button><div class="faq-a"><p>Para marcas que entendem que reputação virou infraestrutura estratégica — e querem ser encontradas, recomendadas e confiáveis na era da IA.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer id="footer">
+  <img class="foot-star" src="assets/img/star-cream.svg" alt=""/>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#" class="logo">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <defs><linearGradient id="duo2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="50%" stop-color="#fffde9"/><stop offset="50%" stop-color="#ffb7b7"/>
+            </linearGradient></defs>
+            <text x="2" y="80" font-family="Sora,sans-serif" font-weight="800" font-size="96" fill="url(#duo2)">D.</text>
+          </svg>
+          Drafted
+        </a>
+        <p>The next gen PR for the AI era. Reputação, autoridade e influência para humanos e para IA.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Navegação</h5>
+        <a href="#shift">A virada</a>
+        <a href="#what">O que fazemos</a>
+        <a href="#products">Produtos</a>
+        <a href="#method">Método</a>
+      </div>
+      <div class="foot-col">
+        <h5>Produtos</h5>
+        <a href="#products">Drafted Intelligence™</a>
+        <a href="#products">Drafted Execution™</a>
+        <a href="#contact">Agendar diagnóstico</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contato</h5>
+        <a href="tel:+5511919911706">+55 11 91991-1706</a>
+        <a href="https://www.instagram.com/drafted.ag" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/company/drafted-co" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://drafted.com.br" target="_blank" rel="noopener">drafted.com.br</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Drafted · São Paulo, Brasil</span>
+      <span>The next gen PR for the AI era.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* nav scroll state */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>20)});
+
+/* reveal on scroll */
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* counters */
+function animateCount(el){
+  const target=+el.dataset.count, dur=1500, t0=performance.now();
+  function tick(t){let p=Math.min((t-t0)/dur,1);p=1-Math.pow(1-p,3);
+    el.textContent=Math.round(target*p).toLocaleString('pt-BR');
+    if(p<1)requestAnimationFrame(tick);}
+  requestAnimationFrame(tick);
+}
+const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){animateCount(e.target);cio.unobserve(e.target)}})},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+/* score bar fill */
+const bio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.width=e.target.dataset.w;bio.unobserve(e.target)}})},{threshold:.5});
+document.querySelectorAll('.score-bar i').forEach(el=>bio.observe(el));
+
+/* parallax star */
+const star=document.getElementById('starFloat');
+addEventListener('scroll',()=>{if(star)star.style.transform=`translate(-50%,calc(-50% + ${scrollY*0.05}px)) rotate(${scrollY*0.02}deg)`});
+
+/* connections network */
+(function(){
+  const C={x:280,y:230};
+  const nodes=[
+    {label:'ChatGPT',x:108,y:70},{label:'Gemini',x:466,y:70},
+    {label:'Google',x:44,y:230},{label:'Perplexity',x:516,y:230},
+    {label:'Instagram',x:120,y:398},{label:'LinkedIn',x:452,y:398},
+  ];
+  const L=document.getElementById('net-links'), N=document.getElementById('net-nodes');
+  if(!L||!N) return;
+  const NS='http://www.w3.org/2000/svg';
+  nodes.forEach((n,i)=>{
+    const line=document.createElementNS(NS,'line');
+    line.setAttribute('x1',C.x);line.setAttribute('y1',C.y);
+    line.setAttribute('x2',n.x);line.setAttribute('y2',n.y);
+    line.setAttribute('class','link');line.style.animationDelay=(i*0.4)+'s';
+    L.appendChild(line);
+    const p=document.createElementNS(NS,'circle');
+    p.setAttribute('r','4');p.setAttribute('class','pulse');
+    const an=document.createElementNS(NS,'animateMotion');
+    an.setAttribute('dur',(2.6+i*0.25)+'s');an.setAttribute('repeatCount','indefinite');
+    an.setAttribute('path',`M${n.x},${n.y} L${C.x},${C.y}`);
+    p.appendChild(an);L.appendChild(p);
+  });
+  nodes.forEach((n,i)=>{
+    const g=document.createElementNS(NS,'g');
+    g.setAttribute('class','node');g.style.animationDelay=(i*0.6)+'s';
+    const w=n.label.length*8.4+34;
+    g.innerHTML=`<rect class="node-chip" x="${n.x-w/2}" y="${n.y-17}" width="${w}" height="34" rx="17"/>
+      <circle class="node-dot" cx="${n.x-w/2+15}" cy="${n.y}" r="5" fill="#6b2137"/>
+      <text class="node-label" x="${n.x-w/2+28}" y="${n.y+5}">${n.label}</text>`;
+    N.appendChild(g);
+  });
+})();
+
+/* faq */
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement, a=item.querySelector('.faq-a');
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null});
+    if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}
+  });
+});
+</script>
+</body>
+</html>
