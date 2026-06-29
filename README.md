@@ -13,8 +13,8 @@ Book + arquivos de onboarding**: paleta, tipografia (Sora / Poppins) e mascote e
 
 ```bash
 # ver o protótipo
-open index.html            # Versão A — Creme & Vinho (brand book)
-open index-light.html      # Versão B — Neutra / Branca
+open index.html              # VERSÃO FINAL (a melhor, ajustada) — é a que vai pro ar
+open index-creme-vinho.html  # Versão A — Creme & Vinho (paleta alternativa, preservada)
 
 # regenerar entregáveis (precisa do Google Chrome instalado)
 npm install
@@ -30,9 +30,10 @@ npm run pdf          # gera o PDF anotado em deliverables/
 
 | Caminho | O que é |
 |---|---|
-| `index.html` | Protótipo navegável — **Versão A (Creme & Vinho)**, animado e responsivo |
-| `index-light.html` | Protótipo navegável — **Versão B (Neutra / Branca)** |
-| `deploy/` | **Pacote pronto pra publicar na Hostinger** (antiga pasta _SITE DRAFTED COMPLETO_): `index.html` = Versão B + só os assets usados + `LEIA-ME.txt`. Suba o conteúdo de `deploy/` em `public_html`. |
+| `index.html` | **VERSÃO FINAL** — a mais recente/ajustada (neutra), idêntica à do `deploy/`. É a que vai pro ar |
+| `index-creme-vinho.html` | **Versão A (Creme & Vinho)** — paleta alternativa do brand book, preservada |
+| `index-light.html` | Fonte da versão neutra (idêntico ao `index.html` atual; usado pelos scripts de captura) |
+| `deploy/` | **Pacote pronto pra publicar na Hostinger** (antiga pasta _SITE DRAFTED COMPLETO_): `index.html` final + só os assets usados + `LEIA-ME.txt`. Suba o conteúdo de `deploy/` em `public_html`. |
 | `draft-board.html` | **Board de revisão** — cada seção com rótulo, objetivo, copy e espaço de comentário |
 | `deliverables/Drafted-Landing-Rascunho.pdf` | O board acima exportado em PDF |
 | `deliverables/anim/` | Animações em **GIF + MP4 + WEBM** (mascote e rede de conexões) |
