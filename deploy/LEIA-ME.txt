@@ -1,0 +1,31 @@
+SITE DRAFTED — pacote para deploy (Hostinger)
+=============================================
+
+COMO SUBIR NA HOSTINGER
+-----------------------
+1. Painel Hostinger > Gerenciador de Arquivos (ou FTP).
+2. Entre na pasta "public_html".
+3. Suba TODO o conteúdo desta pasta (o arquivo index.html + a pasta assets/)
+   mantendo a estrutura. NÃO suba a pasta "SITE DRAFTED COMPLETO" inteira —
+   suba o que está DENTRO dela.
+4. Acesse o domínio. O index.html é carregado automaticamente.
+
+ESTRUTURA
+---------
+index.html ............ página única (HTML + CSS + JS embutidos)
+assets/img/ ........... imagens, logos (SVG), ilustrações dos cards
+assets/video/ ......... vídeos (hero escuro + animação da estrela)
+
+DEPENDÊNCIAS ONLINE (carregam sozinhas quando publicado)
+--------------------------------------------------------
+- Google Fonts (Sora + Poppins) via CDN.
+- Agendamento Cal.com (embed). Hoje está com a conta de exemplo "peer".
+  Para usar a agenda real da Drafted/KAU.AI, troque no index.html:
+  procure por  calLink: "peer"  e coloque o link da conta Cal.com da Drafted.
+
+OBSERVAÇÕES
+-----------
+- Responsivo auditado em 360 / 390 / 414 / 768 / 834 / 1024 / 1280 / 1440 px:
+  sem overflow horizontal e sem erros de console.
+- Peso total do pacote: ~4,6 MB.
+- Telefone, Instagram e LinkedIn no rodapé já apontam para os contatos da Drafted.

@@ -32,6 +32,7 @@ npm run pdf          # gera o PDF anotado em deliverables/
 |---|---|
 | `index.html` | Protótipo navegável — **Versão A (Creme & Vinho)**, animado e responsivo |
 | `index-light.html` | Protótipo navegável — **Versão B (Neutra / Branca)** |
+| `deploy/` | **Pacote pronto pra publicar na Hostinger** (antiga pasta _SITE DRAFTED COMPLETO_): `index.html` = Versão B + só os assets usados + `LEIA-ME.txt`. Suba o conteúdo de `deploy/` em `public_html`. |
 | `draft-board.html` | **Board de revisão** — cada seção com rótulo, objetivo, copy e espaço de comentário |
 | `deliverables/Drafted-Landing-Rascunho.pdf` | O board acima exportado em PDF |
 | `deliverables/anim/` | Animações em **GIF + MP4 + WEBM** (mascote e rede de conexões) |
