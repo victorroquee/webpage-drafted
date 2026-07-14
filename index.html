@@ -545,6 +545,25 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
   padding:34px 30px;display:flex;flex-direction:column;box-shadow:0 30px 60px -46px rgba(53,30,40,.5);
   transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .layer:hover{transform:translateY(-6px);box-shadow:0 42px 72px -42px rgba(53,30,40,.55)}
+/* hierarquia: SEO (o conhecido) < AEO (novo) < GEO (destaque) */
+.layer.seo{background:var(--paper);border-color:rgba(53,30,40,.08);box-shadow:0 22px 44px -40px rgba(53,30,40,.45)}
+.layer.seo .layer-tag{color:var(--graphite)}
+.layer.seo h4{color:var(--graphite)}
+.layer.aeo{border:1.5px solid rgba(255,183,183,.85);box-shadow:0 34px 64px -44px rgba(107,33,55,.55)}
+.layer.geo{background:var(--wine);border-color:transparent;overflow:hidden;box-shadow:0 34px 66px -38px rgba(107,33,55,.65)}
+.layer.geo:hover{box-shadow:0 46px 80px -38px rgba(107,33,55,.7)}
+.layer.geo .layer-tag{color:var(--butter)}
+.layer.geo .layer-sub{color:rgba(255,253,233,.72)}
+.layer.geo .layer-lead{color:#fff}
+.layer.geo .layer-obj{color:rgba(255,253,233,.78)}
+.layer.geo .layer-obj b{color:#fff}
+.layer.geo h4{color:var(--rose)}
+.layer.geo li{color:rgba(255,253,233,.95)}
+.layer.geo .pstar{position:absolute;width:170px;right:-42px;top:-42px;opacity:.13;animation:pstarSpin 30s linear infinite;pointer-events:none}
+.layer-chip{position:absolute;top:26px;right:26px;font-family:'Sora';font-weight:700;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:40px}
+.layer.seo .layer-chip{background:rgba(79,79,79,.09);color:var(--graphite)}
+.layer.aeo .layer-chip{background:rgba(255,183,183,.28);color:var(--wine)}
+.layer.geo .layer-chip{background:rgba(208,195,96,.16);color:var(--butter);border:1px solid rgba(208,195,96,.38)}
 .layer-tag{font-family:'Sora';font-weight:800;font-size:1.75rem;letter-spacing:.02em;color:var(--wine);line-height:1}
 .layer-sub{font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:var(--graphite);margin-top:6px;font-weight:600}
 .layer-lead{font-family:'Sora';font-weight:600;font-size:1.02rem;color:var(--ink);margin-top:20px;line-height:1.38}
@@ -919,21 +938,23 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
       <p class="lead">Durante anos, aparecer no Google era suficiente. Hoje, as pessoas pesquisam, perguntam para inteligências artificiais, leem respostas prontas e tomam decisões antes mesmo de visitar um site. Por isso, uma estratégia completa precisa combinar três camadas complementares.</p>
     </div>
     <div class="layer-grid">
-      <article class="layer reveal d1">
+      <article class="layer seo reveal d1">
+        <span class="layer-chip">Conhecido</span>
         <div class="layer-tag">SEO</div>
         <div class="layer-sub">Search Engine Optimization</div>
         <p class="layer-lead">Faça sua marca aparecer nos mecanismos de busca tradicionais.</p>
         <p class="layer-obj"><b>Objetivo:</b> ser encontrado no Google.</p>
         <h4>Foco</h4>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#6b2137" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Palavras-chave</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#6b2137" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Conteúdo</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#6b2137" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Estrutura técnica</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#6b2137" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Performance</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#6b2137" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Backlinks</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#4f4f4f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Palavras-chave</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#4f4f4f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Conteúdo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#4f4f4f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Estrutura técnica</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#4f4f4f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Performance</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#4f4f4f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Backlinks</li>
         </ul>
       </article>
-      <article class="layer reveal d2">
+      <article class="layer aeo reveal d2">
+        <span class="layer-chip">Novo</span>
         <div class="layer-tag">AEO</div>
         <div class="layer-sub">Answer Engine Optimization</div>
         <p class="layer-lead">Faça seu conteúdo responder às perguntas das pessoas.</p>
@@ -946,18 +967,20 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#6b2137" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Respostas claras e objetivas</li>
         </ul>
       </article>
-      <article class="layer reveal d3">
+      <article class="layer geo reveal d3">
+        <img class="pstar" src="assets/img/star-cream.svg" alt=""/>
+        <span class="layer-chip">Destaque</span>
         <div class="layer-tag">GEO</div>
         <div class="layer-sub">Generative Engine Optimization</div>
         <p class="layer-lead">Faça sua marca ser reconhecida e recomendada pelas inteligências artificiais.</p>
         <p class="layer-obj"><b>Objetivo:</b> ser citado por ChatGPT, Gemini, Claude, Perplexity e outros modelos generativos.</p>
         <h4>Foco</h4>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#6b2137" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Autoridade digital</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#6b2137" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Reputação</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#6b2137" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Fontes confiáveis</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#6b2137" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Consistência da marca</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#6b2137" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Presença em diferentes canais</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#d0c360" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Autoridade digital</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#d0c360" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Reputação</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#d0c360" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Fontes confiáveis</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#d0c360" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Consistência da marca</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#d0c360" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Presença em diferentes canais</li>
         </ul>
       </article>
     </div>
