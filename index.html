@@ -296,18 +296,14 @@ h2.title.scribble::after{content:"";position:absolute;left:1%;right:26%;bottom:-
 /* ---------- PRODUCTS ---------- */
 .products{background:var(--paper)}
 .prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:60px;position:relative}
-/* setas em ciclo entre os dois produtos — cada uma carrega o acento do card de destino */
-.prod-link{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:96px;height:72px;pointer-events:none;z-index:6}
-.prod-link svg{width:100%;height:100%;overflow:visible}
-.pl-arrow{fill:none;stroke:url(#pl-grad);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
-  stroke-dasharray:6 7;animation:arrowFlow 1.25s linear infinite}
-.pl-arrow.b{animation-delay:.62s}
-.pl-head{fill:none;stroke:var(--butter);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;animation:headPulse 1.7s ease-in-out infinite}
-.pl-head.b{stroke:var(--rose);animation-delay:.85s}
-@keyframes arrowFlow{to{stroke-dashoffset:-13}}
-@keyframes headPulse{0%,100%{opacity:.55}50%{opacity:1}}
-@media(max-width:880px){.prod-link{transform:translate(-50%,-50%) rotate(90deg)}}
-@media(prefers-reduced-motion:reduce){.pl-arrow{stroke-dasharray:0}}
+/* selo de ciclo entre os dois produtos (comunicação em paralelo) */
+.prod-link{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:88px;height:88px;
+  border-radius:50%;background:var(--cream);border:2px solid var(--wine);
+  box-shadow:0 14px 30px -14px rgba(53,30,40,.6);display:grid;place-items:center;pointer-events:none;z-index:6}
+.prod-link svg{width:72px;height:72px}
+.pl-rot{transform-origin:48px 48px;animation:spin 14s linear infinite}
+.pl-arc,.pl-tip{fill:none;stroke:var(--wine);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.pl-star{fill:var(--wine)}
 .prod{border-radius:30px 30px 30px 10px;padding:46px 46px 44px;position:relative;overflow:hidden;min-height:460px;display:flex;flex-direction:column;transition:transform .45s var(--ease),box-shadow .45s var(--ease);box-shadow:0 30px 60px -42px rgba(53,30,40,.7)}
 .prod::after{content:"";position:absolute;inset:0;border-radius:30px;background:radial-gradient(420px circle at 100% 0,rgba(255,183,183,.16),transparent 55%);opacity:0;transition:opacity .45s;pointer-events:none}
 .prod:hover{transform:translateY(-10px) rotate(0deg);box-shadow:0 50px 90px -42px rgba(107,33,55,.6)}
@@ -781,16 +777,14 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
         </ul>
       </div>
       <div class="prod-link" aria-hidden="true">
-        <svg viewBox="0 0 80 60" fill="none">
-          <defs>
-            <linearGradient id="pl-grad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#ffb7b7"/><stop offset=".5" stop-color="#6b2137"/><stop offset="1" stop-color="#d0c360"/>
-            </linearGradient>
-          </defs>
-          <path class="pl-arrow" d="M24 27 C33 15,47 15,56 27"/>
-          <path class="pl-head" d="M51 23 L57 27 L51 31"/>
-          <path class="pl-arrow b" d="M56 33 C47 45,33 45,24 33"/>
-          <path class="pl-head b" d="M29 29 L23 33 L29 37"/>
+        <svg viewBox="0 0 96 96" fill="none">
+          <g class="pl-rot">
+            <path class="pl-arc" d="M19.8 37.7 A30 30 0 0 1 76.2 37.7"/>
+            <path class="pl-tip" d="M77.3 27.7 L76.2 37.7 L68.9 30.7"/>
+            <path class="pl-arc" d="M76.2 58.3 A30 30 0 0 1 19.8 58.3"/>
+            <path class="pl-tip" d="M18.7 68.3 L19.8 58.3 L27.1 65.3"/>
+          </g>
+          <path class="pl-star" transform="translate(36,36)" d="M12 0l2.4 9.2L24 12l-9.6 2.8L12 24l-2.4-9.2L0 12l9.6-2.8z"/>
         </svg>
       </div>
     </div>
