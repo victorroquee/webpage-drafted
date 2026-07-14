@@ -509,7 +509,9 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
   background:conic-gradient(from 0deg,rgba(255,183,183,0) 258deg,rgba(255,183,183,.05) 312deg,rgba(255,183,183,.18) 356deg,rgba(255,183,183,0) 360deg);
   animation:spin 9s linear infinite}
 .radial-spokes{position:absolute;inset:0;width:100%;height:100%;z-index:1}
-.radial-spokes line{stroke:rgba(255,183,183,.16);stroke-width:.5}
+.radial-spokes line{stroke:rgba(255,183,183,.18);stroke-width:.5;stroke-dasharray:1.6 2.6;animation:spokeFlow 7s linear infinite}
+.radial-orbit{fill:none;stroke:rgba(255,183,183,.26);stroke-width:.45;stroke-dasharray:.4 2.4;stroke-linecap:round;animation:orbitCrawl 26s linear infinite}
+.radial-orbit.o2{stroke:rgba(255,183,183,.14);animation-direction:reverse}
 .radial-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:31%;aspect-ratio:1;border-radius:50%;
   display:grid;place-content:center;text-align:center;gap:2px;z-index:3;
   background:radial-gradient(circle at 40% 34%,#7d2a43,#54172a 76%);
@@ -530,6 +532,8 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
 .rnode span{font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,253,233,.62);text-align:center;line-height:1.12}
 @keyframes coreRing{0%{transform:scale(1);opacity:.55}70%{opacity:0}100%{transform:scale(1.85);opacity:0}}
 @keyframes nodeBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes spokeFlow{to{stroke-dashoffset:8.4}}
+@keyframes orbitCrawl{to{stroke-dashoffset:-28}}
 @media(max-width:860px){
   .cover{grid-template-columns:1fr;gap:34px;padding:38px 24px}
   .radial{max-width:340px}
@@ -903,6 +907,8 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
         <div class="radial" role="img" aria-label="Drafted Análise 360°: 12 plataformas monitoradas — Google, Reddit, X, LinkedIn, Instagram, TikTok, web aberto, Reclame Aqui, ChatGPT, Claude, Perplexity e Gemini.">
           <span class="radial-sweep" aria-hidden="true"></span>
           <svg class="radial-spokes" viewBox="0 0 100 100" aria-hidden="true" preserveAspectRatio="none">
+            <circle class="radial-orbit" cx="50" cy="50" r="37"/>
+            <circle class="radial-orbit o2" cx="50" cy="50" r="23.5"/>
             <line x1="50" y1="50" x2="50" y2="13"/><line x1="50" y1="50" x2="68.5" y2="17.96"/>
             <line x1="50" y1="50" x2="82.04" y2="31.5"/><line x1="50" y1="50" x2="87" y2="50"/>
             <line x1="50" y1="50" x2="82.04" y2="68.5"/><line x1="50" y1="50" x2="68.5" y2="82.04"/>
