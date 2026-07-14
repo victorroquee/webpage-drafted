@@ -496,7 +496,7 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
   animation:coreRing 4.2s ease-out infinite}
 .radial-core span{font-family:'Sora';font-weight:800;font-size:.95rem;color:var(--cream);letter-spacing:-.01em}
 .radial-core em{font-style:normal;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);margin-top:3px}
-.rnode{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:6px;width:62px;z-index:2}
+.rnode{position:absolute;transform:translate(-50%,-19px);display:flex;flex-direction:column;align-items:center;gap:6px;width:66px;z-index:2}
 .rn-ic{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;
   background:rgba(255,253,233,.07);border:1px solid rgba(255,253,233,.15);
   animation:nodeBreath 4.4s ease-in-out infinite;transition:transform .4s var(--ease),background .3s,border-color .3s;will-change:transform}
@@ -505,7 +505,7 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
 .rnode:nth-of-type(5n) .rn-ic{animation-delay:2.7s}
 .rnode:hover .rn-ic{animation:none;border-color:rgba(255,183,183,.6);background:rgba(255,253,233,.14);transform:scale(1.12)}
 .rn-ic img,.rn-ic svg{width:20px;height:20px;object-fit:contain}
-.rnode span{font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,253,233,.62);text-align:center;line-height:1.12}
+.rnode span{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,253,233,.7);text-align:center;line-height:1.15}
 @keyframes coreRing{0%{transform:scale(1);opacity:.55}70%{opacity:0}100%{transform:scale(1.85);opacity:0}}
 @keyframes nodeBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 @keyframes spokeFlow{to{stroke-dashoffset:8.4}}
@@ -513,7 +513,7 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
 @media(max-width:860px){
   .cover{grid-template-columns:1fr;gap:34px;padding:38px 24px}
   .radial{max-width:340px}
-  .rnode{width:52px;gap:4px}
+  .rnode{width:56px;gap:4px;transform:translate(-50%,-16px)}
   .rn-ic{width:31px;height:31px}
   .rn-ic img,.rn-ic svg{width:16px;height:16px}
 }
