@@ -474,6 +474,45 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
   .cta-left,.cta-right{padding:36px 26px}
   .hero{padding:140px 0 60px}
 }
+
+/* ===== COVER / ANÁLISE 360° (pg7) ===== */
+.cover{position:relative;margin-top:54px;display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center;
+  background:radial-gradient(120% 120% at 15% 0%,#3a1622 0%,#241019 46%,#160a0f 100%);
+  color:var(--cream);border-radius:34px;padding:52px 54px;overflow:hidden;
+  box-shadow:0 44px 90px -54px rgba(22,10,15,.9)}
+.cover::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(58% 58% at 84% 52%,rgba(255,183,183,.12),transparent 70%)}
+.cover-copy{position:relative;z-index:2}
+.cover-kicker{display:inline-flex;align-items:center;gap:9px;font-family:'Sora';font-weight:600;font-size:.76rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--rose);margin-bottom:18px}
+.cover-h{font-family:'Sora';font-weight:800;font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.12;letter-spacing:-.02em;color:var(--cream);max-width:16ch}
+.cover-h span{color:var(--rose)}
+.cover-copy p{margin-top:16px;font-size:.97rem;line-height:1.6;color:rgba(255,253,233,.72);max-width:44ch}
+.cover-stats{margin-top:30px;display:flex;gap:38px;flex-wrap:wrap}
+.cover-stats b{font-family:'Sora';font-weight:800;font-size:2rem;color:var(--butter);line-height:1;display:block}
+.cover-stats span{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,253,233,.6);margin-top:6px;display:block}
+.cover-radial{position:relative;z-index:2}
+.radial{position:relative;width:100%;max-width:440px;margin:0 auto;aspect-ratio:1/1}
+.radial-spokes{position:absolute;inset:0;width:100%;height:100%}
+.radial-spokes line{stroke:rgba(255,183,183,.22);stroke-width:.5;stroke-dasharray:2 2}
+.radial-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:31%;aspect-ratio:1;border-radius:50%;
+  display:grid;place-content:center;text-align:center;gap:2px;z-index:3;
+  background:radial-gradient(circle at 40% 34%,#7d2a43,#54172a 76%);
+  border:1px solid rgba(255,183,183,.35);box-shadow:0 0 0 8px rgba(125,42,67,.14),0 18px 40px -18px rgba(0,0,0,.7)}
+.radial-core span{font-family:'Sora';font-weight:800;font-size:.95rem;color:var(--cream);letter-spacing:-.01em}
+.radial-core em{font-style:normal;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);margin-top:3px}
+.rnode{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:6px;width:62px}
+.rn-ic{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;
+  background:rgba(255,253,233,.07);border:1px solid rgba(255,253,233,.15)}
+.rn-ic img,.rn-ic svg{width:20px;height:20px;object-fit:contain}
+.rnode span{font-size:.58rem;letter-spacing:.03em;text-transform:uppercase;color:rgba(255,253,233,.6);text-align:center;line-height:1.12}
+@media(max-width:860px){
+  .cover{grid-template-columns:1fr;gap:34px;padding:38px 24px}
+  .radial{max-width:340px}
+  .rnode{width:52px;gap:4px}
+  .rn-ic{width:31px;height:31px}
+  .rn-ic img,.rn-ic svg{width:16px;height:16px}
+}
 </style>
 <style id="theme-light-override">
 /* ===== TEMA NEUTRO / BRANCO ===== */
@@ -750,26 +789,51 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
   </div>
 </section>
 
-<!-- ===================== NETWORK / CONNECTIONS ===================== -->
-<section class="sec network" id="network">
+<!-- ===================== COVER / ANÁLISE 360° ===================== -->
+<section class="sec cover-sec" id="network">
   <div class="wrap">
-    <div class="reveal">
-      <span class="kicker">Onde sua marca aparece</span>
-      <h2 class="title">Uma reputação. Lida por humanos <em style="color:var(--rose);font-style:normal">e</em> por IA.</h2>
-      <p class="lead">Sua marca é interpretada em buscadores, redes e nos modelos de IA que as pessoas consultam antes de decidir. A Drafted conecta e fortalece todos esses pontos.</p>
+    <div class="reveal" style="text-align:center;max-width:720px;margin:0 auto">
+      <span class="kicker" style="justify-content:center">Cobertura de análise</span>
+      <h2 class="title" style="margin:0 auto">O que faz uma marca ser recomendada?</h2>
+      <p class="lead" style="margin:22px auto 0">A reputação da sua marca não é construída em um único lugar. Ela é resultado da combinação entre presença digital, autoridade, experiência do cliente e a forma como as inteligências artificiais interpretam todas essas informações.</p>
     </div>
-    <div class="reveal d1">
-      <svg class="conn" viewBox="0 0 560 460" aria-label="Diagrama de conexões da marca com plataformas e IAs">
-        <defs><radialGradient id="glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#ffb7b7" stop-opacity=".30"/><stop offset="100%" stop-color="#ffb7b7" stop-opacity="0"/>
-        </radialGradient></defs>
-        <g id="net-links"></g>
-        <circle cx="280" cy="230" r="74" fill="url(#glow)"/>
-        <circle class="center-ring" cx="280" cy="230"/>
-        <circle cx="280" cy="230" r="50" fill="#6b2137"/>
-        <g class="center-star"><path fill="#fffde9" transform="translate(280,230) scale(0.135) translate(-300,-285)" d="M 300,55 L 336.7,196.3 L 462.6,122.4 L 388.7,248.3 L 530,285 L 388.7,321.7 L 462.6,447.6 L 336.7,373.7 L 300,515 L 263.3,373.7 L 137.4,447.6 L 211.3,321.7 L 70,285 L 211.3,248.3 L 137.4,122.4 L 263.3,196.3 Z"/></g>
-        <g id="net-nodes"></g>
-      </svg>
+    <div class="cover reveal d1">
+      <div class="cover-copy">
+        <span class="cover-kicker">Cobertura de análise</span>
+        <h3 class="cover-h">Mapeamos sua marca em <span>12 superfícies</span> ao mesmo tempo.</h3>
+        <p>IAs generativas, motores de busca, redes sociais e reputação aberta. Cada plataforma tem regras próprias de citação, ranqueamento e recomendação. A gente lê todas elas no mesmo diagnóstico.</p>
+        <p>O resultado é uma fotografia única de como sua marca aparece (ou desaparece) onde decisões realmente acontecem hoje.</p>
+        <div class="cover-stats">
+          <div><b>12</b><span>Plataformas</span></div>
+          <div><b>4</b><span>Camadas</span></div>
+          <div><b>48h</b><span>Para entregar</span></div>
+        </div>
+      </div>
+      <div class="cover-radial">
+        <div class="radial" role="img" aria-label="Drafted Análise 360°: 12 plataformas monitoradas — Google, Reddit, X, LinkedIn, Instagram, TikTok, web aberto, Reclame Aqui, ChatGPT, Claude, Perplexity e Gemini.">
+          <svg class="radial-spokes" viewBox="0 0 100 100" aria-hidden="true" preserveAspectRatio="none">
+            <line x1="50" y1="50" x2="50" y2="13"/><line x1="50" y1="50" x2="68.5" y2="17.96"/>
+            <line x1="50" y1="50" x2="82.04" y2="31.5"/><line x1="50" y1="50" x2="87" y2="50"/>
+            <line x1="50" y1="50" x2="82.04" y2="68.5"/><line x1="50" y1="50" x2="68.5" y2="82.04"/>
+            <line x1="50" y1="50" x2="50" y2="87"/><line x1="50" y1="50" x2="31.5" y2="82.04"/>
+            <line x1="50" y1="50" x2="17.96" y2="68.5"/><line x1="50" y1="50" x2="13" y2="50"/>
+            <line x1="50" y1="50" x2="17.96" y2="31.5"/><line x1="50" y1="50" x2="31.5" y2="17.96"/>
+          </svg>
+          <div class="radial-core"><span>Drafted</span><em>Análise 360°</em></div>
+          <div class="rnode" style="left:50%;top:13%"><span class="rn-ic"><img src="assets/img/logos/google.svg" alt=""></span><span>Google</span></div>
+          <div class="rnode" style="left:68.5%;top:17.96%"><span class="rn-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="7.5" fill="#ff4500"/><circle cx="9.2" cy="13" r="1.4" fill="#fff"/><circle cx="14.8" cy="13" r="1.4" fill="#fff"/><path d="M8.6 16c1.9 1.4 4.9 1.4 6.8 0" stroke="#fff" stroke-width="1.2" fill="none" stroke-linecap="round"/><circle cx="17.6" cy="6.4" r="1.4" fill="#ff4500"/><circle cx="12" cy="6.4" r="1" fill="#ff4500"/><path d="M12 6.4h5.6" stroke="#ff4500" stroke-width=".9"/></svg></span><span>Reddit</span></div>
+          <div class="rnode" style="left:82.04%;top:31.5%"><span class="rn-ic"><svg viewBox="0 0 24 24" fill="#f2ecef"><path d="M18.9 2H22l-7.1 8.1L23.3 22h-6.6l-5.2-6.8L5.6 22H2.5l7.6-8.7L1.1 2h6.8l4.7 6.2L18.9 2Zm-1.2 18h1.8L7.2 3.8H5.3L17.7 20Z"/></svg></span><span>X</span></div>
+          <div class="rnode" style="left:87%;top:50%"><span class="rn-ic"><img src="assets/img/logos/linkedin.svg" alt=""></span><span>LinkedIn</span></div>
+          <div class="rnode" style="left:82.04%;top:68.5%"><span class="rn-ic"><img src="assets/img/logos/instagram.svg" alt=""></span><span>Instagram</span></div>
+          <div class="rnode" style="left:68.5%;top:82.04%"><span class="rn-ic"><svg viewBox="0 0 24 24" fill="#f2ecef"><path d="M16.6 3c.3 2.3 1.9 4 4.2 4.2v2.6c-1.5.1-3-.4-4.2-1.3v5.9c0 3.2-2.7 5.6-5.8 5.3-2.7-.3-4.7-2.6-4.6-5.4.1-2.8 2.5-4.9 5.4-4.7v2.7c-.4-.1-.9-.1-1.3 0-1.2.2-2 1.2-1.9 2.4.1 1.1 1.1 2 2.3 1.9 1.3 0 2.2-1 2.2-2.3V3h3.7Z"/></svg></span><span>TikTok</span></div>
+          <div class="rnode" style="left:50%;top:87%"><span class="rn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#8fd3ff" stroke-width="1.5"><circle cx="12" cy="12" r="8.5"/><ellipse cx="12" cy="12" rx="4" ry="8.5"/><path d="M3.5 12h17M5.2 7.2h13.6M5.2 16.8h13.6"/></svg></span><span>Web aberto</span></div>
+          <div class="rnode" style="left:31.5%;top:82.04%"><span class="rn-ic"><svg viewBox="0 0 24 24" fill="#12b76a"><path d="M4.2 4h15.6a1.2 1.2 0 0 1 1.2 1.2v9.6a1.2 1.2 0 0 1-1.2 1.2H9.5L5.4 20v-3.9a1.2 1.2 0 0 1-1.2-1.2V5.2A1.2 1.2 0 0 1 4.2 4Z"/></svg></span><span>Reclame Aqui</span></div>
+          <div class="rnode" style="left:17.96%;top:68.5%"><span class="rn-ic"><img src="assets/img/logos/openai.svg" alt=""></span><span>ChatGPT</span></div>
+          <div class="rnode" style="left:13%;top:50%"><span class="rn-ic"><svg viewBox="0 0 24 24" fill="#d97757"><path d="M12 1.5l1.7 6.7L20.5 6l-4.5 5 6.5 2.9-6.9-.5L17 20l-5-4.1L7 20l1.4-6.6-6.9.5L8 11 3.5 6l6.8 2.2L12 1.5Z"/></svg></span><span>Claude</span></div>
+          <div class="rnode" style="left:17.96%;top:31.5%"><span class="rn-ic"><img src="assets/img/logos/perplexity.svg" alt=""></span><span>Perplexity</span></div>
+          <div class="rnode" style="left:31.5%;top:17.96%"><span class="rn-ic"><img src="assets/img/logos/googlegemini.svg" alt=""></span><span>Gemini</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -982,41 +1046,6 @@ const star=document.getElementById('starFloat');
 addEventListener('scroll',()=>{if(star)star.style.transform=`translate(-50%,calc(-50% + ${scrollY*0.05}px)) rotate(${scrollY*0.02}deg)`});
 
 /* connections network */
-(function(){
-  const C={x:280,y:230};
-  const nodes=[
-    {label:'ChatGPT',x:108,y:70},{label:'Gemini',x:466,y:70},
-    {label:'Google',x:44,y:230},{label:'Perplexity',x:516,y:230},
-    {label:'Instagram',x:120,y:398},{label:'LinkedIn',x:452,y:398},
-  ];
-  const L=document.getElementById('net-links'), N=document.getElementById('net-nodes');
-  if(!L||!N) return;
-  const NS='http://www.w3.org/2000/svg';
-  nodes.forEach((n,i)=>{
-    const line=document.createElementNS(NS,'line');
-    line.setAttribute('x1',C.x);line.setAttribute('y1',C.y);
-    line.setAttribute('x2',n.x);line.setAttribute('y2',n.y);
-    line.setAttribute('class','link');line.style.animationDelay=(i*0.4)+'s';
-    L.appendChild(line);
-    const p=document.createElementNS(NS,'circle');
-    p.setAttribute('r','4');p.setAttribute('class','pulse');
-    const an=document.createElementNS(NS,'animateMotion');
-    an.setAttribute('dur',(2.6+i*0.25)+'s');an.setAttribute('repeatCount','indefinite');
-    an.setAttribute('path',`M${n.x},${n.y} L${C.x},${C.y}`);
-    p.appendChild(an);L.appendChild(p);
-  });
-  const ICON={ChatGPT:'openai',Gemini:'googlegemini',Google:'google',Perplexity:'perplexity',Instagram:'instagram',LinkedIn:'linkedin'};
-  nodes.forEach((n,i)=>{
-    const g=document.createElementNS(NS,'g');
-    g.setAttribute('class','node');g.style.animationDelay=(i*0.6)+'s';
-    const w=n.label.length*8.2+64;
-    g.innerHTML=`<rect class="node-chip" x="${n.x-w/2}" y="${n.y-17}" width="${w}" height="34" rx="17"/>
-      <image href="assets/img/logos/${ICON[n.label]}.svg" x="${n.x-w/2+12}" y="${n.y-11}" width="22" height="22"/>
-      <text class="node-label" x="${n.x-w/2+42}" y="${n.y+5}">${n.label}</text>`;
-    N.appendChild(g);
-  });
-})();
-
 /* faq */
 document.querySelectorAll('.faq-q').forEach(q=>{
   q.addEventListener('click',()=>{
