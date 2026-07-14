@@ -489,14 +489,13 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
 
 /* ===== COVER / ANÁLISE 360° (pg7) ===== */
 .cover{position:relative;margin-top:54px;display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center;
-  background:radial-gradient(120% 120% at 15% 0%,#3a1622 0%,#241019 46%,#160a0f 100%);
+  background:radial-gradient(120% 120% at 15% 0%,var(--wine) 0%,var(--wine-deep) 48%,var(--ink) 100%);
   color:var(--cream);border-radius:34px;padding:52px 54px;overflow:hidden;
   box-shadow:0 44px 90px -54px rgba(53,30,40,.72)}
 .cover::before{content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(58% 58% at 84% 52%,rgba(255,183,183,.12),transparent 70%)}
 .cover-copy{position:relative;z-index:2}
-.cover-kicker{display:inline-flex;align-items:center;gap:9px;font-family:'Sora';font-weight:600;font-size:.76rem;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--rose);margin-bottom:18px}
+.cover .kicker{color:var(--rose);margin-bottom:18px}
 .cover-h{font-family:'Sora';font-weight:800;font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1.12;letter-spacing:-.02em;color:var(--cream);max-width:16ch}
 .cover-h span{color:var(--rose)}
 .cover-copy p{margin-top:16px;font-size:.97rem;line-height:1.6;color:rgba(255,253,233,.72);max-width:44ch}
@@ -577,7 +576,7 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
 .layer ul{list-style:none;display:flex;flex-direction:column;gap:10px}
 .layer li{display:flex;gap:10px;align-items:flex-start;font-size:.94rem;color:var(--ink)}
 .layer li svg{width:18px;height:18px;flex-shrink:0;margin-top:2px}
-.layer-cta{margin-top:40px;background:radial-gradient(130% 150% at 10% 0%,#7d2a43 0%,#4d1526 60%,#360e1b 100%);
+.layer-cta{margin-top:40px;background:radial-gradient(130% 150% at 10% 0%,var(--wine-soft) 0%,var(--wine-deep) 58%,var(--ink) 100%);
   color:var(--cream);border-radius:30px;padding:52px 54px;display:grid;grid-template-columns:1.05fr 1fr;gap:44px;
   align-items:center;overflow:hidden;position:relative}
 .layer-cta::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(50% 60% at 88% 18%,rgba(255,183,183,.14),transparent 70%)}
@@ -893,7 +892,7 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
     </div>
     <div class="cover reveal d1">
       <div class="cover-copy">
-        <span class="cover-kicker">Cobertura de análise</span>
+        <span class="kicker">Cobertura de análise</span>
         <h3 class="cover-h">Mapeamos sua marca em <span>12 superfícies</span> ao mesmo tempo.</h3>
         <p>IAs generativas, motores de busca, redes sociais e reputação aberta. Cada plataforma tem regras próprias de citação, ranqueamento e recomendação. A gente lê todas elas no mesmo diagnóstico.</p>
         <p>O resultado é uma fotografia única de como sua marca aparece (ou desaparece) onde decisões realmente acontecem hoje.</p>
@@ -923,7 +922,7 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
           <div class="rnode" style="left:87%;top:50%"><span class="rn-ic"><img src="assets/img/logos/linkedin.svg" alt=""></span><span>LinkedIn</span></div>
           <div class="rnode" style="left:82.04%;top:68.5%"><span class="rn-ic"><img src="assets/img/logos/instagram.svg" alt=""></span><span>Instagram</span></div>
           <div class="rnode" style="left:68.5%;top:82.04%"><span class="rn-ic"><svg viewBox="0 0 24 24" fill="#f2ecef"><path d="M16.6 3c.3 2.3 1.9 4 4.2 4.2v2.6c-1.5.1-3-.4-4.2-1.3v5.9c0 3.2-2.7 5.6-5.8 5.3-2.7-.3-4.7-2.6-4.6-5.4.1-2.8 2.5-4.9 5.4-4.7v2.7c-.4-.1-.9-.1-1.3 0-1.2.2-2 1.2-1.9 2.4.1 1.1 1.1 2 2.3 1.9 1.3 0 2.2-1 2.2-2.3V3h3.7Z"/></svg></span><span>TikTok</span></div>
-          <div class="rnode" style="left:50%;top:87%"><span class="rn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#8fd3ff" stroke-width="1.5"><circle cx="12" cy="12" r="8.5"/><ellipse cx="12" cy="12" rx="4" ry="8.5"/><path d="M3.5 12h17M5.2 7.2h13.6M5.2 16.8h13.6"/></svg></span><span>Web aberto</span></div>
+          <div class="rnode" style="left:50%;top:87%"><span class="rn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#b7d8ff" stroke-width="1.5"><circle cx="12" cy="12" r="8.5"/><ellipse cx="12" cy="12" rx="4" ry="8.5"/><path d="M3.5 12h17M5.2 7.2h13.6M5.2 16.8h13.6"/></svg></span><span>Web aberto</span></div>
           <div class="rnode" style="left:31.5%;top:82.04%"><span class="rn-ic"><svg viewBox="0 0 24 24" fill="#12b76a"><path d="M4.2 4h15.6a1.2 1.2 0 0 1 1.2 1.2v9.6a1.2 1.2 0 0 1-1.2 1.2H9.5L5.4 20v-3.9a1.2 1.2 0 0 1-1.2-1.2V5.2A1.2 1.2 0 0 1 4.2 4Z"/></svg></span><span>Reclame Aqui</span></div>
           <div class="rnode" style="left:17.96%;top:68.5%"><span class="rn-ic"><img src="assets/img/logos/openai.svg" alt=""></span><span>ChatGPT</span></div>
           <div class="rnode" style="left:13%;top:50%"><span class="rn-ic"><svg viewBox="0 0 24 24" fill="#d97757"><path d="M12 1.5l1.7 6.7L20.5 6l-4.5 5 6.5 2.9-6.9-.5L17 20l-5-4.1L7 20l1.4-6.6-6.9.5L8 11 3.5 6l6.8 2.2L12 1.5Z"/></svg></span><span>Claude</span></div>
