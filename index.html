@@ -393,6 +393,8 @@ h2.title.scribble::after{content:"";position:absolute;left:1%;right:26%;bottom:-
 .kau-embed p{font-size:.9rem;opacity:.8;max-width:30ch}
 .kau-embed .fake-slots{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:8px}
 .kau-embed .fake-slots span{font-size:.8rem;padding:7px 13px;border-radius:30px;border:1px solid rgba(255,253,233,.3);font-weight:500}
+#cal-inline:empty{display:grid;place-items:center}
+#cal-inline:empty::before{content:"Carregando agenda de horários…";color:var(--graphite);font-size:.95rem;font-weight:500;animation:pulse 2s infinite}
 
 /* ---------- FAQ ---------- */
 .faq{max-width:860px;margin:0 auto}
@@ -523,6 +525,18 @@ footer{background:linear-gradient(180deg,var(--ink) 0%,#2c1822 78%,#341c28 100%)
   .rnode{width:56px;gap:4px;transform:translate(-50%,-16px)}
   .rn-ic{width:31px;height:31px}
   .rn-ic img,.rn-ic svg{width:16px;height:16px}
+}
+@media(max-width:560px){
+  .cover{padding:34px 18px 46px}
+  .cover-radial{margin:0 -6px}
+  .radial{max-width:320px}
+  .rnode{width:50px;gap:3px;transform:translate(-50%,-13px)}
+  .rn-ic{width:28px;height:28px}
+  .rn-ic img,.rn-ic svg{width:15px;height:15px}
+  .rnode span{font-size:.53rem;letter-spacing:.04em}
+  .cover-stats{display:grid;grid-template-columns:repeat(3,auto);justify-content:space-between;gap:12px;margin-top:26px}
+  .cover-stats b{font-size:1.6rem}
+  .cover-stats span{font-size:.6rem;letter-spacing:.07em}
 }
 
 /* ===== NOVA ERA / SEO·AEO·GEO (pg8) ===== */
